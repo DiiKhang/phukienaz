@@ -1,0 +1,83 @@
+﻿
+.image-link {
+    background-size: 20px 20px;
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    background-repeat: no-repeat;
+    background-position: center;
+    cursor: pointer;
+}
+
+.edit-image-link {
+    background-image: url("../../system_images/edit-icon.png");
+}
+
+.add-image-link {
+    background-image: url("../../system_images/add-icon.png");
+    margin-left: 7px;
+    width: 145px;
+    font-size: 15px;
+    font-weight: bold;
+}
+
+.delete-image-link {
+    background-image: url("../../system_images/delete-icon.png");
+}
+
+.detail-image-link {
+    background-image: url("../../system_images/detail-icon.png");
+}
+
+.send-asset-image-link {
+    background-image: url("../../system_images/send-asset-icon.png");
+}
+
+.maintaince-image-link {
+    background-image: url("../../system_images/maintaince-cion.png");
+}
+
+.complete-image-link {  
+    background-image: url("../../system_images/complete-icon.png");
+}
+
+.sell-off-image-link {
+    background-image: url("../../system_images/sell-off-icon.png");
+}
+
+.return-image-link {
+    background-image: url("../../system_images/return-icon.png");
+}
+
+.back-button {
+    font-size: 15px;
+    color: red;
+}
+
+.section-content {
+    font-size: 16px;
+    font-family: sans-serif;
+}
+
+#main-table_wrapper label {
+    color: #657382;
+}
+
+#main-table_info {
+    color: #657382;
+    font-style: italic;
+}
+
+.right_col {
+    font-size: 15px;
+    font-family: sans-serif;
+}
+
+.right_col dt {
+    width: 250px;
+}
+
+.right_col dt, dd {
+   font-size: 18px;
+   padding: 1px 20px;
+}

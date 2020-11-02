@@ -1,0 +1,63 @@
+﻿@using PagedList.Mvc;
+@model PagedList.IPagedList<PhuKienAZ.Areas.Admin.Models.DataModel.Product>
+
+@{
+    ViewBag.Title = "Liked";
+    Layout = "~/Areas/Customer/Views/Shared/_Layout.cshtml";
+}
+
+<div class="section">
+    <!-- container -->
+    <div class="container">
+        <!-- row -->
+        <div class="row">
+
+            <div class="col-md-12">
+                <div class="section-title text-center">
+                    <h3 class="title">Sản phẩm đã thích</h3>
+                </div>
+            </div>
+
+            <!-- product -->
+            <div class="col-md-12">
+
+                @foreach (var item in Model)
+                {
+                    <div class="col-md-3 col-xs-6">
+                        <div class="product">
+                            <a href="/Customer/Product/Index/@item.Id">
+                                <div class="product-img">
+                                    <img style="height:262px;width:100%;" src="@item.Picture" alt="">
+
+                                </div>
+                            </a>
+                            <div class="product-body" style="height:201px" id="@item.Id">
+                                <p class="product-category">@item.Category.Name</p>
+                                <h3 class="product-name"><a href="#">@item.Name</a></h3>
+                                @if (item.SellOff != null)
+                                {
+                                    <h4 class="product-price">@item.SellOff VNĐ <del class="product-old-price">@item.Price VNĐ</del></h4>
+                                }
+                                else
+                                {
+                                    <h4 class="product-price">@item.Price VNĐ</h4>
+                                }
+                            </div>
+                            <div class="add-to-cart">
+                                <button value="@item.Id" class="add-to-cart-btn"><i class="fa fa-shopping-cart"></i> Thêm vào giỏ </button>
+                            </div>
+                        </div>
+                    </div>
+                }
+            </div>
+            <!-- /product -->
+            <div class="clearfix visible-sm visible-xs"></div>
+        </div>
+        <!-- /row -->
+    </div>
+    <!-- /container -->
+</div>
+
+<center>Trang @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) của @Model.PageCount
+
+@Html.PagedListPager(Model, page => Url.Action("Liked", new { page }))</center>

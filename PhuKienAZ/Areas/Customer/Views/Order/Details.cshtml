@@ -1,0 +1,119 @@
+﻿@model PhuKienAZ.Areas.Admin.Models.DataModel.Order
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Areas/Customer/Views/Shared/_Layout.cshtml";
+}
+
+<hr />
+<h3 style="text-align:center">Chi tiết đơn hàng #@Model.Id</h3>
+<hr />
+
+<dl style="text-align: center">
+    <dt>
+        Trạng thái
+    </dt>
+
+    @if (Model.Deleted)
+    {
+        <dd>Đã hủy</dd>
+    }
+    else if (Model.Completed)
+    {
+        <dd>Đã giao</dd>
+    }
+    else
+    {
+        <dd>Đang giao</dd>
+    }
+
+    <dt>
+        Hình thức thanh toán
+    </dt>
+    @if (Model.PayByBank)
+    {
+        <dd>Trực tuyến</dd>
+    }
+    else
+    {
+        <dd>Tiền mặt</dd>
+    }
+
+    <dt>
+        @Html.DisplayNameFor(model => model.Destination)
+    </dt>
+
+    <dd>
+        @Html.DisplayFor(model => model.Destination)
+    </dd>
+
+    <dt>
+        @Html.DisplayNameFor(model => model.Date)
+    </dt>
+
+    <dd>
+        @Html.DisplayFor(model => model.Date)
+    </dd>
+
+    <dt>
+        @Html.DisplayNameFor(model => model.Description)
+    </dt>
+
+    <dd>
+        @(Model.Description??"Không có")
+    </dd>
+</dl>
+
+<h4 style="text-align:center"><b>Các sản phẩm trong đơn hàng</b></h4>
+<br />
+
+<div class="container">
+    <table class="table table-bordered hover">
+        <thead>
+            <tr>
+                <th>
+                    Sản phẩm
+                </th>
+                <th>
+                    Đơn giá (vnđ)
+                </th>
+                <th>
+                    Đơn vị tính
+                </th>
+                <th>
+                    Số lượng
+                </th>
+                <th>
+                    Thành tiền (vnđ)
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model.OrderDetails)
+            {
+                <tr>
+                    <td>
+                        <a target="_blank" style="text-decoration: underline" href="/Customer/Product/Index/@item.ProductId">@item.Product.Name</a>
+                    </td>
+                    <td>
+                        @item.Price
+                    </td>
+                    <td>
+                        @item.Product.Unit
+                    </td>
+                    <td>
+                        @item.Quantity
+                    </td>
+                    <td>
+                        @(item.Price * item.Quantity)
+                    </td>
+                </tr>
+            }
+            <tr>
+                <td colspan="3"><center><b>Tổng cộng</b></center></td>
+                <td><b>@Model.OrderDetails.Sum(x => x.Quantity)</b></td>
+                <td><b>@Model.OrderDetails.Sum(x => x.Quantity * x.Price)</b></td>
+            </tr>
+        </tbody>
+    </table>
+</div>

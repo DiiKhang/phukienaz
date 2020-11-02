@@ -1,0 +1,45 @@
+﻿@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Đăng nhập - Phụ Kiện AZ</title>
+    <link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Open+Sans:600'>
+    <link href="~/Areas/Admin/Content/build/css/style.css" rel="stylesheet" />
+
+</head>
+<body>
+    <div class="login-wrap">
+        <div class="login-html">
+            <input id="tab-1" type="radio" name="tab" class="sign-in" checked><label for="tab-1" class="tab">Đăng nhập</label>
+            <input id="tab-2" type="radio" name="tab" class="sign-up"><label for="tab-2" class="tab"></label>
+            <div class="login-form">
+                @using (Html.BeginForm("Login", "Login", new { ReturnUrl = Request.QueryString["ReturnUrl"] }))
+                {
+                    <div class="sign-in-htm">
+                        <div class="group">
+                            <label for="user" class="label">Tài khoản</label>
+                            <input name="username" id="user" type="text" class="input">
+                        </div>
+                        <div class="group">
+                            <label for="pass" class="label">Mật khẩu</label>
+                            <input name="password" id="pass" type="password" class="input" data-type="password">
+                        </div>
+                        <div class="group">
+                            <input id="check" type="checkbox" class="check" checked>
+                            <label for="check"><span class="icon"></span> Nhớ mật khẩu </label>
+                        </div>
+                        <div class="group">
+                            <input type="submit" class="button" value="Đăng nhập">
+                        </div>
+                        <div class="hr"></div>
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
+</body>
+</html>

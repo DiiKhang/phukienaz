@@ -1,0 +1,182 @@
+﻿@model IEnumerable<PhuKienAZ.Areas.Admin.Models.ViewModel.OrderViewModel>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+<style>
+    .new {
+        color: red;
+    }
+
+        .new a {
+            color: red;
+            text-decoration: underline;
+        }
+</style>
+
+<h3>Danh sách đơn hàng</h3>
+
+<h5><i>*Đơn hàng mới sẽ có chữ màu đỏ</i></h5>
+
+<table class="table table-bordered hover" id="order-table">
+    <thead>
+        <tr>
+            <th>
+                Mã số
+            </th>
+            <th>
+                Tên khách hàng
+            </th>
+            <th>
+                Tổng số lượng
+            </th>
+            <th>
+                Tổng số tiền
+            </th>
+            <th>
+                Hình thức thanh toán
+            </th>
+            <th>
+                Trạng thái
+            </th>
+            <th>
+                Thời gian
+            </th>
+            <th>Chi tiết</th>
+            <th>Hoàn thành</th>
+
+        </tr>
+    </thead>
+</table>
+
+
+@section Scripts {
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css">
+    <script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
+    <script type="text/javascript" language="javascript" src="https://cdn.datatables.net/buttons/1.5.2/js/dataTables.buttons.min.js"></script>
+    <script type="text/javascript" language="javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.1.3/jszip.min.js"></script>
+    <script type="text/javascript" language="javascript" src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.36/pdfmake.min.js"></script>
+    <script type="text/javascript" language="javascript" src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.36/vfs_fonts.js"></script>
+    <script type="text/javascript" language="javascript" src="https://cdn.datatables.net/buttons/1.5.2/js/buttons.html5.min.js"></script>
+    <script type="text/javascript" language="javascript" src="https://cdn.datatables.net/buttons/1.2.1/js/buttons.print.min.js"></script>
+    <script src="~/Areas/Admin/Content/build/js/my_data_tables.js"></script>
+    <script>
+        $(function () {
+            var table = $("#order-table").DataTable({
+                lengthMenu: [[10, 25, 50, -1], [10, 25, 50, "Tất cả"]],
+                dom: 'Blfrtip',
+                language: {
+                    lengthMenu: "Hiển thị mỗi _MENU_ kết quả",
+                    paginate: {
+                        next: '&#8594;', // or '→'
+                        previous: '&#8592;' // or '←'
+                    },
+                    search: 'Tìm kiếm',
+                    info: "Hiển thị _START_ - _END_ trong _TOTAL_ kết quả",
+                    zeroRecords: "Không có kết quả",
+                    infoEmpty: "Hiển thị 0 kết quả",
+                    infoFiltered: ""
+                },
+                columnDefs: [
+                    { orderable: false, targets: -1 }
+                ],
+                buttons: [
+                    {
+                        extend: 'excel',
+                        className: 'btn btn-success',
+                        text: 'Xuất file Excel ',
+                        title: 'Danh sách nhân viên',
+                        exportOptions: {
+                            columns: 'th:not(:last-child)'
+                        },
+                        filename: 'Danh sách nhân viên'
+                    },
+                    {
+                        extend: 'print',
+                        className: 'btn btn-info',
+                        text: 'In',
+                        title: 'Danh sách nhân viên',
+                        exportOptions: {
+                            columns: 'th:not(:last-child)'
+                        },
+                        customize: function (win) {
+                            $(win.document.body).find('table')
+                                .addClass('compact')
+                                .css('font-size', 'inherit');
+                        }
+                    }
+                ],
+                "ajax": {
+                    "url": "/Admin/Orders/GetList",
+                    "type": "POST",
+                    "datatype": "json"
+                },
+                "columns": [
+                    { "data": "Id", "name": "Id" },
+                    {
+                        "render": function (data, type, full, meta) {
+                            return '<a href="/Admin/Customers/Details/' + full.CustomerId + '">' + full.CustomerName + '</a>';
+                        }
+                    },
+                    { "data": "TotalQuantity", "name": "TotalQuantity" },
+                    { "data": "Total", "name": "Total" },
+                    { "data": "PayType", "name": "PayType" },
+                    {
+                        "render": function (data, type, full, meta) {
+                            return '<span id="S' + full.Id + '">' + full.Status + '<span>';
+                        }
+                    },
+                    {
+                        "data": "Datetime",
+                        "render": function (data) {
+                            var d = new Date(parseInt(data.substr(6)));
+                            return d.getDate() + '/' + ( d.getMonth() + 1) + '/' + d.getFullYear() + ' ' + d.getHours() + ':' + d.getMinutes() + ':' + d.getSeconds();
+                        }
+                    },
+                    {
+                        "render": function (data, type, full, meta) {
+                            return '<center><a class="image-link detail-image-link" href="/Admin/Orders/Details/' + full.Id + '"></a><center>';
+                        }
+                    },
+                    {
+                        "render": function (data, type, full, meta) {
+                            if (full.Status === 'Đang giao')
+                                return '<center><a id=' + full.Id + ' class="image-link complete-image-link myBtn"></a><center>';
+                            return null;
+                        }
+                    }
+                ],
+                "serverSide": "true",
+                "order": [0, "desc"],
+                rowCallback: function (row, data) {
+                    if (data.Id > @ViewBag.lastCheckedOrderId) {
+                        $(row).addClass('new');
+                    }
+            }
+
+            });
+
+            table.buttons().containers().insertAfter('#order-table_wrapper');
+
+            $('table').on('click', '.myBtn', function (e) {
+                var a = $(this);
+                var id = a.attr('id');
+                confirm('Đã giao đơn hàng mã: ' + id + '?')
+                $.ajax({
+                    type: "POST",
+                    url: "/Admin/Orders/Complete/" + id,
+                    success: function (data) {
+                        if (data != '') {
+                            alert(data);
+                        } else {
+                            alert('Thao tác thành công !');
+                            $('#S' + id).html('Đã giao');
+                            a.parent().html(null);
+                        }
+                    }
+                });
+            });
+        });
+</script>
+}

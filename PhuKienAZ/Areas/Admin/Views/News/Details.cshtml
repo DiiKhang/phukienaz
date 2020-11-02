@@ -1,0 +1,70 @@
+﻿@model PhuKienAZ.Areas.Admin.Models.DataModel.News
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+    var user = (PhuKienAZ.Areas.Admin.Models.DataModel.User)Session["user"];
+}
+
+<div>
+    <h3>Chi tiết tin tức</h3>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.User.Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.User.Name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Title)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Title)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Picture)
+        </dt>
+
+        <dd>
+            <img src="@Model.Picture" width="150" />
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Brief)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Brief)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Content)
+        </dt>
+
+        <dd>
+            @Html.Raw(Model.Content)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Date)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Date)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink(" Quay lại", "Index", null, new { Class = "back-button fa fa-hand-o-left" }) |
+    @Html.ActionLink(" ", "Edit", new { id = Model.Id }, new { Class = "image-link edit-image-link" })
+    @if (user.Manager && Model.Deleted)
+    {
+        <span> |</span><a href="/Admin/News/Restore/@Model.Id"> Khôi phục </a>
+    }
+</p>

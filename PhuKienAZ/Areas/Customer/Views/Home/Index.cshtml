@@ -1,0 +1,222 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/Customer/Views/Shared/_Layout.cshtml";
+    var newProducts = (List<PhuKienAZ.Areas.Admin.Models.DataModel.Product>)ViewBag.NewProducts;
+    var topSelling = (List<PhuKienAZ.Areas.Admin.Models.DataModel.Product>)ViewBag.TopSelling;
+    var customer = (PhuKienAZ.Areas.Admin.Models.DataModel.Customer)Session["customer"];
+    var news = (List<PhuKienAZ.Areas.Admin.Models.DataModel.News>)ViewBag.News;
+}
+
+<style>
+</style>
+
+
+<!-- SECTION -->
+<div class="section">
+    <!-- container -->
+    <div class="container">
+        <!-- row -->
+        <div class="row">
+
+            <!-- section title -->
+            <div class="col-md-12">
+                <div class="section-title">
+                    <h3 class="title">Sản phẩm mới</h3>
+
+                </div>
+            </div>
+            <!-- /section title -->
+            <!-- Products tab & slick -->
+            <div class="col-md-12">
+                <div class="row">
+                    <div class="products-tabs">
+                        <div id="tab1" class="tab-pane active">
+                            <div class="products-slick" data-nav="#slick-nav-1">
+                                @foreach (var item in newProducts)
+                                {
+                                    <div class="product">
+                                        <a href="/Customer/Product/Index/@item.Id">
+                                            <div class="product-img">
+                                                <img src="@item.Picture" alt="">
+
+                                            </div>
+                                        </a>
+                                        <div style="height:201px" class="product-body" id="@item.Id">
+                                            <p class="product-category">@item.Category.Name</p>
+                                            <h3 class="product-name"><a href="#">@item.Name</a></h3>
+                                            @if (item.SellOff != null)
+                                            {
+                                                <h4 class="product-price">@item.SellOff VNĐ <del class="product-old-price">@item.Price VNĐ</del></h4>
+                                            }
+                                            else
+                                            {
+                                                <h4 class="product-price">@item.Price VNĐ</h4>
+                                            }
+                                            <div class="product-rating">
+                                                <span><b>@(item.Likes.Count(x => x.ProductId == item.Id))</b> <i class="fa fa-heart-o"></i></span>
+                                            </div>
+                                            @if (customer != null)
+                                            {
+                                                <div class="product-btns">
+                                                    <button class="add-to-wishlist">
+                                                        @if (item.Likes.SingleOrDefault(x => x.ProductId == item.Id && x.CustomerId == customer.Id) == null)
+                                                        {
+                                                            <i style="color:red" class="fa fa-heart-o"></i><span class="tooltipp">Yêu thích</span>
+                                                        }
+                                                        else
+                                                        {
+                                                            <i style="color:red" class="fa fa-heart"></i><span class="tooltipp">Bỏ thích</span>
+                                                        }
+
+                                                    </button>
+                                                </div>
+                                            }
+
+                                        </div>
+                                        <div class="add-to-cart">
+                                            <button value="@item.Id" class="add-to-cart-btn"><i class="fa fa-shopping-cart"></i> Thêm vào giỏ </button>
+                                        </div>
+                                    </div>
+
+                                }
+                            </div>
+                            <div id="slick-nav-1" class="products-slick-nav"></div>
+                        </div>
+                        <!-- tab -->
+                        <!-- /tab -->
+                    </div>
+                </div>
+            </div>
+            <!-- Products tab & slick -->
+        </div>
+        <!-- /row -->
+    </div>
+    <!-- /container -->
+</div>
+<!-- /SECTION -->
+<!-- HOT DEAL SECTION -->
+<!-- /HOT DEAL SECTION -->
+<!-- SECTION -->
+<div class="section">
+    <!-- container -->
+    <div class="container">
+        <!-- row -->
+        <div class="row">
+
+            <!-- section title -->
+            <div class="col-md-12">
+                <div class="section-title">
+                    <h3 class="title">Sản phẩm bán chạy</h3>
+                </div>
+            </div>
+            <!-- /section title -->
+            <!-- Products tab & slick -->
+            <div class="col-md-12">
+                <div class="row">
+                    <div class="products-tabs">
+                        <!-- tab -->
+                        <div id="tab2" class="tab-pane fade in active">
+                            <div class="products-slick" data-nav="#slick-nav-2">
+                                <!-- product -->
+                                @foreach (var item in topSelling)
+                                {
+                                    <div class="product">
+                                        <a href="/Customer/Product/Index/@item.Id">
+                                            <div class="product-img">
+                                                <img src="@item.Picture" alt="">
+
+                                            </div>
+                                        </a>
+                                        <div style="height:201px" class="product-body" id="@item.Id">
+                                            <p class="product-category">@item.Category.Name</p>
+                                            <h3 class="product-name"><a href="#">@item.Name</a></h3>
+                                            @if (item.SellOff != null)
+                                            {
+                                                <h4 class="product-price">@item.SellOff VNĐ <del class="product-old-price">@item.Price VNĐ</del></h4>
+                                            }
+                                            else
+                                            {
+                                                <h4 class="product-price">@item.Price VNĐ</h4>
+                                            }
+                                            <div class="product-rating">
+                                                <span><b>@(item.Likes.Count(x => x.ProductId == item.Id))</b> <i class="fa fa-heart-o"></i></span>
+                                            </div>
+                                            @if (customer != null)
+                                            {
+                                                <div class="product-btns">
+                                                    <button class="add-to-wishlist">
+                                                        @if (item.Likes.SingleOrDefault(x => x.ProductId == item.Id && x.CustomerId == customer.Id) == null)
+                                                        {
+                                                            <i style="color:red" class="fa fa-heart-o"></i><span class="tooltipp">Yêu thích</span>
+                                                        }
+                                                        else
+                                                        {
+                                                            <i style="color:red" class="fa fa-heart"></i><span class="tooltipp">Bỏ thích</span>
+                                                        }
+
+                                                    </button>
+                                                </div>
+                                            }
+                                        </div>
+                                        <div class="add-to-cart">
+                                            <button value="@item.Id" class="add-to-cart-btn"><i class="fa fa-shopping-cart"></i> Thêm vào giỏ </button>
+                                        </div>
+                                    </div>
+
+                                }
+                                <!-- /product -->
+                            </div>
+                            <div id="slick-nav-2" class="products-slick-nav"></div>
+                        </div>
+                        <!-- /tab -->
+                    </div>
+                </div>
+            </div>
+            <!-- /Products tab & slick -->
+        </div>
+        <!-- /row -->
+    </div>
+    <!-- /container -->
+</div>
+<!-- /SECTION -->
+<!-- SECTION -->
+<div class="section">
+    <!-- container -->
+    <div class="container">
+        <!-- row -->
+        <div class="row">
+            <hr />
+            <h3 style="text-align:center">Tin tức mới nhất</h3>
+            <hr />
+            @foreach (var item in news)
+            {           
+                <div class="col-md-12 col-xs-12">
+                    <a href="/Customer/News/Details/@item.Id">
+                        <div class="section-title">
+                            <div class="col-md-4"><center><img style="height:155px" width="250" src="@item.Picture" /></center></div>
+                            <div class="col-md-8">
+                                <div id="slick-nav-4" class="news-title">
+                                    <h3>@item.Title</h3>
+                                </div>
+                                <div>
+                                    Ngày tạo: @item.Date.Value.ToString("dd-MM-yyyy")
+                                </div>
+                                <br />
+                                <i>@item.Brief</i>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+                <hr />
+            }     
+            <!-- /row -->
+        </div>
+        <hr />
+        <div><center><a class="btn btn-primary" href="/Customer/News/Index">Xem thêm</a></center></div>
+        <!-- /container -->
+    </div>
+</div>
+    @section Scripts {
+
+    }

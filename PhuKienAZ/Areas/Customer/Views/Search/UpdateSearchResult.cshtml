@@ -1,0 +1,51 @@
+﻿@model IEnumerable<PhuKienAZ.Areas.Admin.Models.DataModel.Product>
+@{
+    var customer = (PhuKienAZ.Areas.Admin.Models.DataModel.Customer)Session["customer"];
+}
+@TempData["TotalProduct"]|
+@foreach (var item in Model)
+{
+    <div class="col-md-4 col-xs-6">
+        <div class="product">
+            <a href="/Customer/Product/Index/@item.Id">
+                <div class="product-img">
+                    <img style="height:262px;width:100%;" src="@item.Picture" alt="">
+
+                </div>
+            </a>
+            <div class="product-body" style="height:201px" id="@item.Id">
+                <p class="product-category">@item.Category.Name</p>
+                <h3 class="product-name"><a href="#">@item.Name</a></h3>
+                @if (item.SellOff != null)
+                {
+                    <h4 class="product-price">@item.SellOff VNĐ <del class="product-old-price">@item.Price VNĐ</del></h4>
+                }
+                else
+                {
+                    <h4 class="product-price">@item.Price VNĐ</h4>
+                }
+                <div class="product-rating">
+                    <span><b>@(item.Likes.Count(x => x.ProductId == item.Id))</b> <i class="fa fa-heart-o"></i></span>
+                </div>
+                <div class="product-btns">
+                    <button class="add-to-wishlist">
+                        @if (customer != null)
+                        {
+                            if (item.Likes.SingleOrDefault(x => x.ProductId == item.Id && x.CustomerId == customer.Id) == null)
+                            {
+                                <i style="color:red" class="fa fa-heart-o"></i><span class="tooltipp">Yêu thích</span>
+                            }
+                            else
+                            {
+                                <i style="color:red" class="fa fa-heart"></i><span class="tooltipp">Bỏ thích</span>
+                            }
+                        }
+                    </button>
+                </div>
+            </div>
+            <div class="add-to-cart">
+                <button value="@item.Id" class="add-to-cart-btn"><i class="fa fa-shopping-cart"></i> Thêm vào giỏ </button>
+            </div>
+        </div>
+    </div>
+}

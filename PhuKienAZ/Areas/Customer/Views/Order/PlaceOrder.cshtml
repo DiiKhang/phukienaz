@@ -1,0 +1,127 @@
+﻿@{
+
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/Customer/Views/Shared/_Layout.cshtml";
+    var customer = (PhuKienAZ.Areas.Admin.Models.DataModel.Customer)Session["customer"];
+    var cartItems = (List<PhuKienAZ.Areas.Customer.Models.ViewModels.CartItem>)Session["cart"];
+    var payByBank = (bool)ViewBag.payByBank;
+}
+
+<div class="section">
+    <!-- container -->
+    <div class="container">
+        <!-- row -->
+        <div class="row">
+            @using (Html.BeginForm("PlaceOrder", "Order", FormMethod.Post))
+            {
+                <div class="col-md-7">
+                    <!-- Shiping Details -->
+                    <div class="shiping-details">
+                        <div class="section-title">
+                            <h3 class="title">Thông tin khách hàng</h3>
+                        </div>
+                    </div>
+                    <h5 class="title">Tên khách hàng</h5>
+                    <div class="form-group">
+                        <input class="input" disabled type="text" value="@customer.Name">
+                    </div>
+                    <h5 class="title">Số điện thoại</h5>
+                    <div class="form-group">
+                        <input class="input" disabled type="text" value="@customer.Phone">
+                    </div>
+                    <h5 class="title">Email</h5>
+                    <div class="form-group">
+                        <input class="input" disabled type="text" value="@customer.Email">
+                    </div>
+                    <h5 class="title">Địa chỉ</h5>
+                    <div class="form-group">
+                        <input class="input" disabled type="text" value="@customer.Address">
+                    </div>
+                    <h5 class="title">Số tài khoản ngân hàng</h5>
+                    <div class="form-group">
+                        <input class="input" disabled type="text" placeholder="Chưa có" value="@customer.BankAccountCode">
+                    </div>
+                    <h4><center><a href="/Customer/Customers/Edit" class="btn btn-primary">Chỉnh sửa</a></center></h4>
+                    <hr />
+
+                    <div class="shiping-details">
+                        <div class="section-title">
+                            <h3 class="title">Giao hàng tới địa chỉ khác</h3>
+                        </div>
+                    </div>
+
+                    <div class="order-notes">
+                        <textarea class="input" name="destination" placeholder="Nếu để trống đơn hàng sẽ giao về địa chỉ của bạn"></textarea>
+                    </div>
+
+                    <div class="shiping-details">
+                        <div class="section-title">
+                            <h3 class="title">Ghi chú</h3>
+                        </div>
+                    </div>
+
+                    <div class="order-notes">
+                        <textarea class="input" name="description" placeholder=""></textarea>
+                    </div>
+
+                    <!-- /Order notes -->
+                </div>
+
+                <!-- Order Details -->
+                <div class="col-md-5 order-details">
+                    <div class="section-title text-center">
+                        <h3 class="title">Đơn hàng của bạn</h3>
+                    </div>
+                    <div class="order-summary">
+                        <div class="order-col">
+                            <div><strong>Sản phẩm</strong></div>
+                            <div><strong>Tổng (VNĐ)</strong></div>
+                        </div>
+                        <div class="order-products">
+                            @foreach (var item in cartItems)
+                            {
+                                <div class="order-col">
+                                    <div>(@item.Quantity)x @item.ProductName</div>
+                                    <div>@(item.Price * item.Quantity)</div>
+                                </div>
+                            }
+                        </div>
+                        <div class="order-col">
+                            <div><strong>Tổng cộng(VNĐ)</strong></div>
+                            <div><strong class="order-total">@cartItems.Sum(x => x.Quantity * x.Price)</strong></div>
+                        </div>
+                    </div>
+                    <div class="payment-method">
+                        <div class="input-radio">
+                            <input type="radio" checked name="payByBank" value="false" id="payment-2">
+                            <label for="payment-2">
+                                <span></span>
+                                Thanh toán khi nhận hàng
+                            </label>
+                        </div>
+                        <div class="input-radio">
+                            <input type="radio" @((payByBank)?"checked":"") value="true" name="payByBank" id="payment-1">
+                            <label for="payment-1">
+                                <span></span>
+                                Chuyển khoản ngân hàng (HDBank)
+                            </label>
+                        </div>
+                    </div>
+                    <a href="#" class="primary-btn order-submit">Đặt hàng</a>
+                </div>
+            }
+            <!-- /Order Details -->
+        </div>
+        <!-- /row -->
+    </div>
+    <!-- /container -->
+</div>
+@Html.Raw(TempData["eror"])
+@section Scripts {
+    <script>
+        $('.order-submit').click(function () {
+            $('[action="/Customer/Order/PlaceOrder"]').submit();
+        });
+    </script>
+}
+

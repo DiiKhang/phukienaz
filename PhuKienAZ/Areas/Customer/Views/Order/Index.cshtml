@@ -1,0 +1,100 @@
+﻿@model IEnumerable<PhuKienAZ.Areas.Admin.Models.DataModel.Order>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/Customer/Views/Shared/_Layout.cshtml";
+}
+
+<hr />
+<h3 style="text-align:center">Đơn hàng đã đặt</h3>
+<hr />
+<style>
+    th {text-align: center};
+</style>
+
+<div class="container">
+    <table class="table table-bordered hover" id="customer-order-table">
+        <thead>
+            <tr>
+                <th>
+                    Mã đơn hàng
+                </th>
+                <th>
+                    Tổng số sản phẩm
+                </th>
+                <th>
+                    Tổng tiền
+                </th>
+                <th>
+                    Phương thức thanh toán
+                </th>
+                <th>
+                    Ngày tháng
+                </th>
+                <th>
+                    Trạng thái
+                </th>
+                <th>
+                    <center>Thao tác</center>
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @item.Id
+                    </td>
+                    <td>
+                        @item.OrderDetails.Sum(x => x.Quantity)
+                    </td>
+                    <td>
+                        @item.OrderDetails.Sum(x => x.Quantity * x.Price)
+                    </td>
+                    <td>
+                        @((item.PayByBank) ? "Chuyển khoản" : "Khi nhận hàng")
+                    </td>
+                    <td>
+                        @item.Date.Value.ToString("dd-MM-yyyy")
+                    </td>
+                    <td>
+                        @if (item.Deleted)
+                {
+                            <span>Đã hủy</span>
+                        }
+                        else if (item.Completed)
+                        {
+                            <span>Đã nhận hàng</span>
+                        }
+                        else
+                        {
+                            <span>Đang giao</span>
+                        }
+                    </td>
+                    <td>
+                        <center>
+                            @Html.ActionLink("Chi tiết", "Details", new { id = item.Id }) &nbsp; &nbsp;
+                            @if (!item.Deleted && !item.Completed)
+                            {
+                                @Html.ActionLink("Hủy", "Delete", new { id = item.Id }, new { Class = "image-link delete-image-link", onclick = "return confirm('Bạn chắc chắn chứ ?')" })
+                            }
+                        </center>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
+@Html.Raw(TempData["eror"])
+@section scripts {
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css">
+    <script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
+    <script type="text/javascript" language="javascript" src="https://cdn.datatables.net/buttons/1.5.2/js/dataTables.buttons.min.js"></script>
+    <script type="text/javascript" language="javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.1.3/jszip.min.js"></script>
+    <script type="text/javascript" language="javascript" src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.36/pdfmake.min.js"></script>
+    <script type="text/javascript" language="javascript" src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.36/vfs_fonts.js"></script>
+    <script type="text/javascript" language="javascript" src="https://cdn.datatables.net/buttons/1.5.2/js/buttons.html5.min.js"></script>
+    <script type="text/javascript" language="javascript" src="https://cdn.datatables.net/buttons/1.2.1/js/buttons.print.min.js"></script>
+    <script src="~/Areas/Admin/Content/build/js/my_data_tables.js"></script>
+}

@@ -1,0 +1,102 @@
+﻿@model PhuKienAZ.Areas.Admin.Models.DataModel.Product
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+    var user = (PhuKienAZ.Areas.Admin.Models.DataModel.User)Session["user"];
+}
+
+<div>
+    <h3>Chi tiết thông tin sản phẩm</h3>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Category.Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Category.Name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Manufacturer.Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Manufacturer.Name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Name)
+        </dt>
+
+        <dd>
+            <a target="_blank" style="text-decoration: underline" href="/Customer/Product/Index/@Model.Id">@Model.Name</a>
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ProducingCountry)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ProducingCountry)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.WarrantyMonths)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.WarrantyMonths)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Price)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Price)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.SellOff)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SellOff)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Unit)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Unit)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Picture)
+        </dt>
+
+        <dd>
+            <img src="@Model.Picture" width="150" />
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Description)
+        </dt>
+
+        <dd>
+            @Html.Raw(Model.Description)
+        </dd>
+
+    </dl>
+</div>
+<p>
+       @Html.ActionLink(" Quay lại", "Index", null, new { Class = "back-button fa fa-hand-o-left" }) |
+       @Html.ActionLink(" ", "Edit", new { id = Model.Id }, new { Class = "image-link edit-image-link" })
+    @if (user.Manager && Model.Deleted)
+    {
+        <span> |</span><a href="/Admin/Products/Restore/@Model.Id"> Khôi phục </a>
+    }
+</p>

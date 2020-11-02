@@ -1,0 +1,119 @@
+﻿@model PhuKienAZ.Areas.Admin.Models.DataModel.Order
+@{
+    var orderDetails = Model.OrderDetails.ToList();
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Trang quản trị Phụ kiện AZ</title>
+    <meta charset="utf-8" />
+</head>
+<body>
+    <link href="//netdna.bootstrapcdn.com/bootstrap/3.1.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+    <script src="//netdna.bootstrapcdn.com/bootstrap/3.1.0/js/bootstrap.min.js"></script>
+    <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+    <!------ Include the above in your HEAD tag ---------->
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12">
+                <div class="invoice-title">
+                    <h2> <center>Hóa đơn bán hàng</center> </h2><h3 class="pull-right">Mã đơn hàng:#@Model.Id</h3>
+                </div>
+                <hr>
+                <div class="row">
+                    <div class="col-xs-6">
+                        <address>
+                            <strong>Người gửi:</strong><br>
+                            Cửa hàng: Phụ kiện AZ<br>
+                            236 Hoàng Quốc Việt<br>
+                            Hà Nội<br>
+                        </address>
+                    </div>
+                    <div class="col-xs-6 text-right">
+                        <address>
+                            <strong>Người nhận:</strong><br>
+                            @Model.Customer.Name<br>
+                            @Model.Destination<br>
+                        </address>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-xs-6">
+                        <address>
+                            <strong>
+                                Phương thức thanh toán:@if (Model.PayByBank)
+                                {
+                                    <span>Trực tuyến</span>
+                                }
+                                else
+                                {
+                                    <span>Tiền mặt</span>
+                                }
+                            </strong><br>
+                            <br>
+                        </address>
+                    </div>
+                    <div class="col-xs-6 text-right">
+                        <address>
+                            <strong>Ngày tạo:</strong><br>
+                            @Model.Date.Value.ToString("dd-MM-yyyy hh:mm:ss")<br><br>
+                        </address>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-12">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h3 class="panel-title"><strong>Chi tiết đơn hàng</strong></h3>
+                    </div>
+                    <table class="table table-hover">
+                        <thead>
+                            <tr>
+                                <td><strong>Sản phẩm</strong></td>
+                                <td class="text-center"><strong>Đơn vị tính</strong></td>
+                                <td class="text-center"><strong>Đơn giá (VNĐ)</strong></td>
+                                <td class="text-center"><strong>Số lượng</strong></td>
+                                <td class="text-right"><strong>Tổng (VNĐ)   </strong></td>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <!-- foreach ($order->lineItems as $line) or some such thing here -->
+                            @foreach (var item in orderDetails)
+                            {
+                                <tr>
+                                    <td>@item.Product.Name</td>
+                                    <td class="text-center">@item.Product.Unit</td>
+                                    <td class="text-center">@item.Price</td>
+                                    <td class="text-center">@item.Quantity</td>
+                                    <td class="text-right">@(item.Quantity * item.Price)</td>
+                                </tr>
+                            }
+                            <tr>
+                                <td colspan="4" class="no-line text-center"><strong>Tổng cộng (VNĐ)</strong></td>
+                                <td class="no-line text-right">@orderDetails.Sum(x => x.Price * x.Quantity)</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div style="text-align: center"><a id="print-order" class="btn btn-primary" href="#">In</a></div>
+</body>
+</html>
+<script src="~/Areas/Admin/Content/build/js/printThis.js"></script>
+<script>
+    $(function () {
+        $("#print-order").click(function () {
+            $('.container').printThis({
+                importCSS: true,
+                pageTitle: '',
+                header: ''
+            });
+        });
+    });
+</script>

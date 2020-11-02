@@ -1,0 +1,192 @@
+﻿@{
+    var user = (PhuKienAZ.Areas.Admin.Models.DataModel.User)Session["user"];
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <!-- Meta, title, CSS, favicons, etc. -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>Trang quản trị Phụ kiện AZ</title>
+    <!-- Bootstrap -->
+    <link href="~/Areas/Admin/Content/vendors/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.2/css/all.css" integrity="sha384-/rXc/GQVaYpyDdyxK+ecHPVYJSN9bmVFBvjA/9eOB+pb3F2w2N6fc5qB9Ew5yIns" crossorigin="anonymous">
+    <link href="~/Areas/Admin/Content/vendors/font-awesome/css/font-awesome.min.css" rel="stylesheet">
+    <!-- Custom Theme Style -->
+    <link href="~/Areas/Admin/Content/build/css/custom.min.css" rel="stylesheet">
+    <link href="~/Areas/Admin/Content/build/css/my_css.css" rel="stylesheet" />
+</head>
+<body class="nav-md">
+    <div class="container body">
+        <div class="main_container">
+            <div class="col-md-3 left_col">
+                <div class="left_col scroll-view">
+                    <div class="navbar nav_title" style="border: 0;">
+                        <a href="index.html" class="site_title"><i class="fa fa-paw"></i> <span>Phụ kiện AZ</span></a>
+                    </div>
+                    <div class="clearfix"></div>
+                    <!-- menu profile quick info -->
+                    <div class="profile clearfix">
+                        <div class="profile_pic">
+                            <img src="@user.Picture" alt="..." class="img-circle profile_img">
+                        </div>
+                        <div class="profile_info">
+                            <span>Xin chào</span>
+                            <h2><b>@user.Name</b></h2>
+                        </div>
+                    </div>
+                    <!-- /menu profile quick info -->
+                    <br />
+                    <!-- sidebar menu -->
+                    <div id="sidebar-menu" class="main_menu_side hidden-print main_menu">
+                        @if (user.Manager)
+                        {
+                            <div class="menu_section">
+                                <h3>Quản lý</h3>
+                                <ul class="nav side-menu">
+                                    <li>
+                                        <a><i class="fas fa-home"></i> Trang chủ <span class="fa fa-chevron-down"></span></a>
+                                        <ul class="nav child_menu">
+                                            <li><a href="/Admin/Home">Dashboard</a></li>
+                                        </ul>
+                                    </li>
+                                    <li>
+                                        <a><i class="fas fa-hdd"></i> Hệ thống <span class="fa fa-chevron-down"></span></a>
+                                        <ul class="nav child_menu">
+                                            <li><a href="/Admin/Users">Người dùng</a></li>
+                                            <li><a href="/Admin/Activities">Nhật ký hoạt động</a></li>
+                                        </ul>
+                                    </li>
+                                    <li>
+                                        <a><i class="far fa-chart-bar"></i> Thống kê <span class="fa fa-chevron-down"></span></a>
+                                        <ul class="nav child_menu">
+                                            <li><a href="/Admin/Statistics/SoldProductByMonth">Số lượng sản phẩm bán ra theo tháng</a></li>
+                                            <li><a href="/Admin/Statistics/MoneyByMonth">Số tiền bán sản phẩm theo tháng</a></li>
+                                            <li><a href="/Admin/Statistics/ProByCat">Số lượng sản phẩm theo danh mục</a></li>
+                                        </ul>
+                                    </li>
+                                </ul>
+                            </div>
+                        }
+                        <div class="menu_section">
+                            <h3>Chung</h3>
+                            <ul class="nav side-menu">
+                                <li>
+                                    <a><i class="fas fa-tags"></i> Danh mục <span class="fa fa-chevron-down"></span></a>
+                                    <ul class="nav child_menu">
+                                        <li><a href="/Admin/Categories">Danh mục sản phẩm</a></li>
+                                        <li><a href="/Admin/Manufacturers">Hãng sản xuất</a></li>
+                                        <li><a href="/Admin/Products">Sản phẩm</a></li>
+                                        <li><a href="/Admin/News">Tin tức</a></li>
+                                    </ul>
+                                </li>
+                                <li>
+                                    <a><i class="fas fa-user"></i> Khách hàng <span class="fa fa-chevron-down"></span></a>
+                                    <ul class="nav child_menu">
+                                        <li><a href="/Admin/Customers">Thông tin khách hàng</a></li>
+                                        <li><a href="/Admin/Comments">Bình luận</a></li>
+                                        <li><a href="/Admin/Orders">Đơn hàng</a></li>
+                                        <li><a href="/Admin/Likes">Yêu thích</a></li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <!-- /sidebar menu -->
+                    <!-- /menu footer buttons -->
+                    <!-- /menu footer buttons -->
+                </div>
+            </div>
+            <!-- top navigation -->
+            <div class="top_nav">
+                <div class="nav_menu">
+                    <nav>
+                        <div class="nav toggle">
+                            <a id="menu_toggle"><i class="fa fa-bars"></i></a>
+                        </div>
+                        <ul class="nav navbar-nav navbar-right">
+                            <li class="">
+                                <a href="javascript:;" class="user-profile dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+                                    <img src=@user.Picture alt="">@user.Name
+                                    <span class=" fa fa-angle-down"></span>
+                                </a>
+                                <ul class="dropdown-menu dropdown-usermenu pull-right">
+                                    @if (user.Manager)
+                                    {
+                                        <li>
+                                            <a href="/Admin/Users/Edit">
+                                                <span>Cập nhật thông tin tài khoản</span>
+                                                <i class="fa fa-key pull-right"></i>
+                                            </a>
+                                        </li>
+                                    }
+                                    <li>
+                                        <a href="/Admin/Users/ChangePassword">
+                                            <span>Đổi mật khẩu</span>
+                                            <i class="fa fa-key pull-right"></i>
+                                        </a>
+                                    </li>
+                                    <li><a href="/Admin/Home/Logout"><i class="fa fa-sign-out pull-right"></i> Đăng xuất</a></li>
+                                </ul>
+                            </li>
+                            <li role="presentation" class="dropdown">
+                                <a href="/Admin/Orders/Index" class="dropdown-toggle info-number">
+                                    <i class="fas fa-receipt"></i>
+                                    <span class="badge bg-green total-new-orders"></span>
+                                </a>
+                            </li>
+                            @if (user.Manager)
+                            {
+                                <li role="presentation" class="dropdown">
+                                    <a href="/Admin/Activities/Index" class="dropdown-toggle info-number">
+                                        <i class="fas fa-tasks"></i>
+                                        <span class="badge bg-green total-new-activities"></span>
+                                    </a>
+                                </li>
+                            }
+                        </ul>
+                    </nav>
+                </div>
+            </div>
+
+            <!-- /top navigation -->
+            <!-- page content -->
+            <div class="right_col" role="main">
+                @RenderBody()
+            </div>
+            <!-- /page content -->
+            <!-- footer content -->
+            <!-- /footer content -->
+        </div>
+    </div>
+    <!-- jQuery -->
+    <script src="~/Areas/Admin/Content/vendors/jquery/dist/jquery.min.js"></script>
+    <!-- Bootstrap -->
+    <script src="~/Areas/Admin/Content/vendors/bootstrap/dist/js/bootstrap.min.js"></script>
+    <!-- Custom Theme Scripts -->
+    <script src="~/Areas/Admin/Content/build/js/custom.min.js"></script>
+</body>
+</html>
+<script>
+    $(function () {
+        $.ajax({
+            url: "/Admin/Home/GetNotifications",
+            type: 'POST',
+            success: function (data) {
+                var result = data.split('|');
+                $('.total-new-orders').text(result[0]);
+                $('.total-new-activities').html(result[1]);
+            }
+        });
+    });
+</script>
+
+@Html.Raw(TempData["erorMessageAlert"])
+
+@RenderSection("scripts", required: false)

@@ -1,0 +1,86 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+    var orderByMonths = (Dictionary<int, int>)ViewBag.OrderByMonths;
+}
+
+<div class="row top_tiles">
+    <div class="animated flipInY col-lg-3 col-md-63 col-sm-6 col-xs-6">
+    </div>
+    <div class="animated flipInY col-lg-3 col-md-63 col-sm-6 col-xs-6">
+        <a href="/Admin/Orders/Index">
+            <div class="tile-stats">
+                <div class="icon"><i class="fas fa-tasks"></i></div>
+                <div class="count total-new-activities"></div>
+                <h3>Hoạt động mới</h3>
+            </div>
+        </a>
+    </div>
+    <div class="animated flipInY col-lg-3 col-md-63 col-sm-6 col-xs-6">
+        <a href="/Admin/Orders/Index">
+            <div class="tile-stats">
+                <div class="icon"><i class="fas fa-receipt"></i></div>
+                <div class="count total-new-orders"></div>
+                <h3>Đơn hàng mới</h3>
+            </div>
+        </a>
+    </div>
+    <div class="animated flipInY col-lg-3 col-md-63 col-sm-6 col-xs-6">
+    </div>
+</div>
+<div>
+    <canvas id="myChart"></canvas>
+</div>
+@section scripts {
+    <script type="text/javascript" language="javascript" src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.3/Chart.min.js"></script>
+    <script type="text/javascript" language="javascript" src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.3/Chart.bundle.min.js"></script>
+    <script>
+        @{
+            string chartData = "";
+            for (int i = 1; i < 13; i++)
+            {
+                if (orderByMonths.ContainsKey(i))
+                {
+                    chartData += orderByMonths[i];
+                } else
+                {
+                    chartData += 0;
+                }
+                if (i < 12)
+                {
+                    chartData += ", ";
+                }
+            }
+        }
+        var ctx = $("#myChart");
+        var myChart = new Chart(ctx, {
+            type: 'bar',
+            data: {
+                labels: ["Tháng 1", "Tháng 2", "Tháng 3", "Tháng 4", "Tháng 5", "Tháng 6", "Tháng 7", "Tháng 8", "Tháng 9", "Tháng 10", "Tháng 11", "Tháng 12"],
+                datasets: [{
+                    label: 'Số đơn hàng đặt theo tháng (năm @DateTime.Now.Year)',
+                    data: [@chartData],
+                    backgroundColor: 'rgba(255, 99, 132, 0.2)',
+                    borderColor:  'rgba(255,99,132,1)',
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                scales: {
+                    yAxes: [{
+                        ticks: {
+                            beginAtZero: true
+                        }
+                    }]
+                },
+                elements: {
+                    line: {
+                        tension: 0, // disables bezier curves
+                    }
+                }
+            }
+        });
+    </script>
+}
+

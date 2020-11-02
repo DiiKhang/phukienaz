@@ -1,0 +1,142 @@
+﻿@model PhuKienAZ.Areas.Admin.Models.DataModel.Order
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+    List<PhuKienAZ.Areas.Admin.Models.DataModel.OrderDetails> orderDetails = Model.OrderDetails.ToList();
+}
+<style>
+    .table, th {
+        text-align: center;
+    }
+</style>
+<div>
+    <h3>Chi tiết thông tin đơn hàng #@Model.Id</h3>
+    @*<-->1</-->
+        <-->Sửa tiêu đề, Xóa những thứ đến trường Deleted</-->*@
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Customer.Name)
+        </dt>
+
+        <dd>
+            <a target="_blank" style="text-decoration: underline" href="/Admin/Customers/Details/" + @Model.Customer.Id>@Model.Customer.Name</a>
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Customer.Phone)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Customer.Phone)
+        </dd>
+
+        <dt>
+            Trạng thái
+        </dt>
+
+        @if (Model.Deleted)
+        {
+            <dd>Đã hủy</dd>
+        }
+        else if (Model.Completed)
+        {
+            <dd>Đã giao</dd>
+        }
+        else
+        {
+            <dd>Đang giao</dd>
+        }
+
+        <dt>
+            Hình thức thanh toán
+        </dt>
+        @if (Model.PayByBank)
+        {
+            <dd>Trực tuyến</dd>
+        }
+        else
+        {
+            <dd>Tiền mặt</dd>
+        }
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Destination)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Destination)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Date)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Date)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Description)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Description)
+        </dd>
+    </dl>
+</div>
+
+<table class="table table-bordered hover" id="category-table">
+    <thead>
+        <tr>
+            <th>
+                Sản phẩm
+            </th>
+            <th>
+                Đơn giá (vnđ)
+            </th>
+            <th>
+                Đơn vị tính
+            </th>
+            <th>
+                Số lượng
+            </th>
+            <th>
+                Thành tiền (vnđ)
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in orderDetails)
+        {
+            <tr>
+                <td>
+                    <a target="_blank" style="text-decoration: underline" href="/Admin/Products/Details/" + @item.ProductId>@item.Product.Name</a>
+                </td>
+                <td>
+                    @item.Price
+                </td>
+                <td>
+                    @item.Product.Unit
+                </td>
+                <td>
+                    @item.Quantity
+                </td>
+                <td>
+                    @(item.Price * item.Quantity)
+                </td>
+            </tr>
+        }
+        <tr>
+            <td colspan="3"><center><b>Tổng cộng</b></center></td>
+            <td><b>@orderDetails.Sum(x => x.Quantity)</b></td>
+            <td><b>@orderDetails.Sum(x => x.Quantity * x.Price)</b></td>
+        </tr>
+    </tbody>
+</table>
+<div style="text-align: center"><a id="print-order" class="btn btn-primary" href="/Admin/Orders/PrintOrder/@Model.Id">Xem hóa đơn</a></div>
+<p>
+    @Html.ActionLink(" Quay lại", "Index", null, new { Class = "back-button fa fa-hand-o-left" }) |
+</p>
+

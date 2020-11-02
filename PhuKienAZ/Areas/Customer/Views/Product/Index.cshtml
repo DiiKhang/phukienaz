@@ -1,0 +1,310 @@
+﻿@{
+    @model PhuKienAZ.Areas.Admin.Models.DataModel.Product
+    Layout = "~/Areas/Customer/Views/Shared/_Layout.cshtml";
+    var customer = (PhuKienAZ.Areas.Admin.Models.DataModel.Customer)Session["customer"];
+    var realatedProducts = (IEnumerable<PhuKienAZ.Areas.Admin.Models.DataModel.Product>)ViewBag.RelatedProducts;
+    int totalPage = (Model.Comments.Count % 3 == 0) ? Model.Comments.Count / 3 : Model.Comments.Count / 3 + 1;
+    var comments = Model.Comments.Where(x => !x.Deleted).ToList();
+}
+<div class="section">
+    <!-- container -->
+    <div class="container">
+        <!-- row -->
+        <div class="row">
+            <!-- Product thumb imgs -->
+            <div class="col-md-6" style="height: 300px">
+                <div>
+                    <center><img style="height: 320px" src="@Model.Picture" alt=""></center>
+                </div>
+            </div>
+            <!-- /Product thumb imgs -->
+            <!-- Product details -->
+            <div class="col-md-6">
+                <div class="product-details">
+                    <h2 class="product-name">@Model.Name</h2>
+                    <div>
+                        <div class="product-rating">
+                            <span style="width: unset">Lượt thích: <b id="PR@(Model.Id)">@(Model.Likes.ToList().Count)</b></span>
+                        </div>
+                    </div>
+                    <div>
+                        @if (Model.SellOff != null)
+                        {
+                            <h3 class="product-price">@Model.SellOff VNĐ <del class="product-old-price">@Model.Price VNĐ</del></h3>
+                        }
+                        else
+                        {
+                            <h3 class="product-price">@Model.Price VNĐ </h3>
+                        }
+                    </div>
+                    <p>Xuất xứ: <b>@Model.ProducingCountry</b></p>
+                    <p>Bảo hành: <b>@Model.WarrantyMonths</b> (tháng)</p>
+                    <div class="add-to-cart">
+                        <div class="qty-label">
+                            Số lượng
+                            <div class="input-number">
+                                <input id="quantity" type="number" value="1">
+                                <span class="qty-up">+</span>
+                                <span class="qty-down">-</span>
+                            </div>
+                        </div>
+                        <button value="@Model.Id" name="main" class="add-to-cart-btn"><i class="fa fa-shopping-cart"></i> Thêm vào giỏ hàng</button>
+                    </div>
+                    @if (customer != null)
+                    {
+                        <ul class="product-btns">
+                            @if (Model.Likes.SingleOrDefault(x => x.ProductId == Model.Id && x.CustomerId == customer.Id) == null)
+                            {
+                                <li style="cursor:pointer">
+                                    <i style="color:red" class="fa fa-heart-o"></i>
+                                    <span class="tooltipp" onclick="addToWishList('@Model.Id', this)">Yêu thích</span>
+                                </li>
+                            }
+                            else
+                            {
+                                <li style="cursor:pointer">
+                                    <i style="color:red" class="fa fa-heart"></i>
+                                    <span class="tooltipp" onclick="addToWishList('@Model.Id', this)">Bỏ thích</span>
+                                </li>
+                            }
+                        </ul>
+                    }
+                    
+
+                    <ul class="product-links">
+                        <li>Danh mục:</li>
+                        <li><a href="#">@Model.Category.Name</a></li>
+                    </ul>
+
+                    <ul class="product-links">
+                        <li>Chia sẻ:</li>
+                        <li><a href="#"><i class="fa fa-facebook"></i></a></li>
+                        <li><a href="#"><i class="fa fa-twitter"></i></a></li>
+                        <li><a href="#"><i class="fa fa-google-plus"></i></a></li>
+                        <li><a href="#"><i class="fa fa-envelope"></i></a></li>
+                    </ul>
+
+                </div>
+            </div>
+            <!-- /Product details -->
+            <!-- Product tab -->
+            <div class="col-md-12">
+                <div id="product-tab">
+                    <!-- product tab nav -->
+                    <ul class="tab-nav">
+                        <li class="active"><a data-toggle="tab" href="#tab1">Mô tả</a></li>
+                        <li><a data-toggle="tab" href="#tab3">Bình luận (<b id="total-comment">@comments.Count</b>)</a></li>
+                    </ul>
+                    <!-- /product tab nav -->
+                    <!-- product tab content -->
+                    <div class="tab-content">
+                        <!-- tab1  -->
+                        <div id="tab1" class="tab-pane fade in active">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <center>
+                                        @Html.Raw(Model.Description)
+                                    </center>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- /tab1  -->
+                        <!-- tab3  -->
+                        <div id="tab3" class="tab-pane fade in">
+                            <div class="row">
+                                <!-- /Rating -->
+                                <!-- Reviews -->
+                                <div class="col-md-3"></div>
+                                <div class="col-md-6">
+                                    @if (customer != null)
+                                    {
+                                        <div style="padding-bottom: 20px;" id="review-form">
+                                            <center>
+                                                <textarea class="input" id="comment" placeholder="Bình luận của bạn"></textarea>
+                                                <button onclick="comment()" class="primary-btn">Gửi</button>
+                                            </center>
+                                        </div>
+                                    }
+                                    <div id="reviews">
+                                        <ul class="reviews">
+                                            @foreach (var item in comments.OrderByDescending(x => x.Datetime).Take(3))
+                                            {
+                                                <li>
+                                                    <div class="review-heading">
+                                                        <h5 class="name">@(item.Customer.Name)</h5>
+                                                        <p class="date">@item.Datetime.ToString("dd-MM-yyyy HH:mm:ss")</p>
+                                                    </div>
+                                                    <div class="review-body">
+                                                        @item.Content
+                                                    </div>
+                                                </li>
+                                            }
+                                        </ul>
+                                        <ul class="reviews-pagination">
+                                            @for (int i = 0; i < totalPage; i++)
+                                            {
+                                                if (i != 0)
+                                                {
+                                                    <li><a>@(i + 1)</a></li>
+                                                }
+                                                else
+                                                {
+                                                    <li class='active'><a>@(i + 1)</a></li>
+                                                }
+                                            }
+                                        </ul>
+                                    </div>
+                                </div>
+                                <div class="col-md-3"></div>
+                                <!-- /Reviews -->
+                            </div>
+                        </div>
+                        <!-- /tab3  -->
+                    </div>
+                    <!-- /product tab content  -->
+                </div>
+            </div>
+            <!-- /product tab -->
+        </div>
+        <!-- /row -->
+    </div>
+    <!-- /container -->
+</div>
+
+<div class="section">
+    <!-- container -->
+    <div class="container">
+        <!-- row -->
+        <div class="row">
+
+            <div class="col-md-12">
+                <div class="section-title text-center">
+                    <h3 class="title">Sản phẩm liên quan</h3>
+                </div>
+            </div>
+
+            <!-- product -->
+            <div class="col-md-12">
+                @foreach (var item in realatedProducts)
+                {
+                    <div class="col-md-3 col-xs-6">
+                        <div class="product">
+                            <a href="/Customer/Product/Index/@item.Id">
+                                <div class="product-img">
+                                    <img src="@item.Picture" alt="">
+                                </div>
+                            </a>
+                            <div style="height:201px" class="product-body" id="@item.Id">
+                                <p class="product-category">@item.Category.Name</p>
+                                <h3 class="product-name"><a href="#">@item.Name</a></h3>
+                                @if (item.SellOff != null)
+                                {
+                                    <h4 class="product-price">@item.SellOff VNĐ <del class="product-old-price">@item.Price VNĐ</del></h4>
+                                }
+                                else
+                                {
+                                    <h4 class="product-price">@item.Price VNĐ</h4>
+                                }
+                            </div>
+                            <div class="add-to-cart">
+                                <button value="@item.Id" class="add-to-cart-btn"><i class="fa fa-shopping-cart"></i> Thêm vào giỏ </button>
+                            </div>
+                        </div>
+                    </div>
+                }
+            </div>
+            <!-- /product -->
+            <div class="clearfix visible-sm visible-xs"></div>
+        </div>
+        <!-- /row -->
+    </div>
+    <!-- /container -->
+</div>
+
+@section Scripts {
+    <script>
+
+        $(function () {
+            $('.reviews-pagination').on('click', 'li', function () {
+                $(this).siblings().each(function () {
+                    $(this).attr('class', null);
+                })
+                $(this).attr('class', 'active');
+                var pageIndex = parseInt($(this).text());
+                $.ajax({
+                    type: "POST",
+                    url: "/Customer/Product/GetComment",
+                    data: { productId: '@(Model.Id)', page : pageIndex},
+                    success: function (data) {
+                        showComment(data, pageIndex);
+                    }
+                });
+            })
+        });
+
+        function addToWishList(id, span) {
+            var id = '@Model.Id';
+            $.ajax({
+                type: "POST",
+                url: "/Customer/Product/Like",
+                data: { productId: id, like: ($(span).html() == 'Yêu thích') },
+                success: function (data) {
+                    if (data.endsWith('!')) {
+                        alert(data);
+                    } else {
+                        var result = data.split('.');
+                        $('#PR' + id).html(result[0]);
+                        if (result[1] == 'True') {
+                            $(span).html('Bỏ thích');
+                            $(span).siblings('i').attr('class', 'fa fa-heart');
+                        } else {
+                            $(span).html('Yêu thích');
+                            $(span).siblings('i').attr('class', 'fa fa-heart-o');
+                        }
+                    }
+                }
+            });
+        }
+
+        function comment() {
+            var id = '@Model.Id';
+            if ($('#comment').val().length == 0) {
+                alert('Bạn chưa nhập bình luận của mình');
+                return;
+            }
+            $.ajax({
+                type: "POST",
+                url: "/Customer/Product/Comment",
+                data: { productId: id, content: $('#comment').val() },
+                success: function (data) {
+                    if (data.endsWith('!')) {
+                        alert(data);
+                    } else {
+                        $('#comment').val(null);
+                        showComment(data, 1);
+                    }
+                }
+            });
+        }
+
+        function showComment(data, currentPage) {
+            var result = data.split('|');
+            var totalComments = parseInt(result[0]);
+            $('#total-comment').text(totalComments);
+            var totalPage = (totalComments % 3 == 0) ? parseInt(totalComments / 3) : (parseInt(totalComments / 3) + 1);
+            $('.reviews-pagination').html(null);
+            for (var i = 0; i < totalPage; i++) {
+                if (i != currentPage - 1) {
+                    $('.reviews-pagination').append('<li><a>' + (i + 1) + '</a></li>');
+                } else {
+                    $('.reviews-pagination').append('<li class="active" ><a>' + (i + 1) + '</a></li>');
+                }
+            }
+            var json = JSON.parse(result[1]);
+            $('.reviews').html(null);
+            for (var i = 0; i < json.length; i++) {
+                $('.reviews').append('<li><div class="review-heading"><h5 class="name">' + json[i].CustomerName + '</h5><p class="date">' + json[i].Datetime + '</p></div ><div class="review-body">' + json[i].Content + '</div></li >');
+            }
+        }
+    </script>
+}

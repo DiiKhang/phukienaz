@@ -1,0 +1,43 @@
+﻿@model PhuKienAZ.Areas.Admin.Models.DataModel.Category
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+    var user = (PhuKienAZ.Areas.Admin.Models.DataModel.User)Session["user"];
+}
+@*<-->1</-->*@
+<div>
+    <h3>Chi tiết thông tin danh mục sản phẩm</h3>
+    @*<-->1</-->
+        <-->Sửa tiêu đề, Xóa những thứ đến trường Deleted</-->*@
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Description)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Description)
+        </dd>
+    </dl>
+</div>
+@*<-->2</-->*@
+<p>
+    @Html.ActionLink(" Quay lại", "Index", null, new { Class = "back-button fa fa-hand-o-left" }) |
+    @Html.ActionLink(" ", "Edit", new { id = Model.Id }, new { Class = "image-link edit-image-link" }) 
+    @if (user.Manager && Model.Deleted)
+    {
+        <span> |</span><a href="/Admin/Categories/Restore/@Model.Id"> Khôi phục </a>
+    }
+
+</p>
+@*<-->2</-->*@
+

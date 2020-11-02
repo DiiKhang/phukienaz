@@ -1,0 +1,139 @@
+﻿@model IEnumerable<PhuKienAZ.Areas.Admin.Models.DataModel.User>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+<h3>Danh sách nhân viên</h3>
+
+<p>
+    @Html.ActionLink("Tạo mới", "Create", null, new { Class = "image-link add-image-link" })
+</p>
+<table class="table table-bordered hover" id="user-table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Username)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Password)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Name)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Phone)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Email)
+            </th>
+            <th>
+                Giới tính
+            </th>
+            <th>
+               Trạng thái
+            </th>
+            <th>
+                <center>Sửa | Chi tiết</center>
+            </th>
+            <th>
+                <center>Thao tác khác</center>
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Username)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Password)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Phone)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Email)
+                </td>
+                <td>
+                    @if (item.Male)
+                    {
+                        <span>Nam</span>
+                    }
+                    else
+                    {
+                        <span>Nữ</span>
+                    }
+                </td>
+                <td >
+                    @if (item.Disabled)
+                    {
+                        <span id="S@(item.Id)" >Vô hiệu hóa</span>
+                    }
+                    else
+                    {
+                        <span id="S@(item.Id)">Đang hoạt động</span>
+                    }
+                </td>
+                <td>
+                    <center>
+                        @Html.ActionLink(" ", "Edit", new { id = item.Id }, new { Class = "image-link edit-image-link" }) &nbsp; &nbsp;
+                        @Html.ActionLink(" ", "Details", new { id = item.Id }, new { Class = "image-link detail-image-link" }) &nbsp; &nbsp;
+                    </center>
+                </td>
+                <td>
+                    <center id="B@(item.Id)">
+                        @if (!item.Disabled)
+                        {
+                            <a href="#" onclick ="updateStatus('@item.Id', true)">Vô hiệu hóa</a>
+                        }                        
+                        else
+                        {
+                            <a href="#" onclick="updateStatus('@item.Id', false)">Kích hoạt</a>
+                        }
+
+                    </center>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+@section Scripts {
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css">
+    <script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
+    <script type="text/javascript" language="javascript" src="https://cdn.datatables.net/buttons/1.5.2/js/dataTables.buttons.min.js"></script>
+    <script type="text/javascript" language="javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.1.3/jszip.min.js"></script>
+    <script type="text/javascript" language="javascript" src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.36/pdfmake.min.js"></script>
+    <script type="text/javascript" language="javascript" src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.36/vfs_fonts.js"></script>
+    <script type="text/javascript" language="javascript" src="https://cdn.datatables.net/buttons/1.5.2/js/buttons.html5.min.js"></script>
+    <script type="text/javascript" language="javascript" src="https://cdn.datatables.net/buttons/1.2.1/js/buttons.print.min.js"></script>
+    <script src="~/Areas/Admin/Content/build/js/my_data_tables.js"></script>
+    <script>
+        function updateStatus(id, disabled) {
+            $.ajax({
+                type: 'POST',
+                url: '/Admin/Users/UpdateStatus',
+                data: { id: id, disabled: disabled },
+                success: function (data) {
+                    if (data != '') {
+                        alert(data);
+                    } else {
+                        var btn = (disabled) ? '<a href="#" onclick="updateStatus(\'' + id + '\', false)">Kích hoạt</a>' : '<a href="#" onclick="updateStatus(\'' + id + '\', true)">Vô hiệu hóa</a>';
+                        alert('Thao tác thành công');
+                        $('#B' + id).html(btn);
+                        var status = (!disabled) ? 'Đang hoạt động' : 'Vô hiệu hóa';
+                        $('#S' + id).html(status);
+                    }
+                }
+            });
+        }
+    </script>
+}

@@ -1,0 +1,31 @@
+﻿@model PhuKienAZ.Areas.Admin.Models.DataModel.News
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Areas/Customer/Views/Shared/_Layout.cshtml";
+}
+<style>
+    strong {
+        display:block;
+        text-align:center;
+    }
+    .news img {
+        display:block;
+        margin: auto
+    }
+</style>
+<hr />
+<h2><center>@Model.Title</center></h2>
+<hr />
+<div class="container news">
+    <br />
+    <p><b>@Model.Brief</b></p>
+    <p><em style="float:right">Ngày: @Model.Date.Value.ToString("dd-MM-yyyy")</em></p>
+    <br />
+    <br />
+    @Html.Raw(Model.Content)
+</div>
+
+
+
+

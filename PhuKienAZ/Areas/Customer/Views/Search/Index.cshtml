@@ -1,0 +1,189 @@
+﻿@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/Customer/Views/Shared/_Layout.cshtml";
+    var categories = (List<PhuKienAZ.Areas.Admin.Models.DataModel.Category>)ViewBag.Categories;
+    var manufacturers = (List<PhuKienAZ.Areas.Admin.Models.DataModel.Manufacturer>)ViewBag.Manufacturers;
+    var customer = (PhuKienAZ.Areas.Admin.Models.DataModel.Customer)Session["customer"];
+}
+
+
+<div class="section" id="top-search-result">
+    <!-- container -->
+        <div class="container">
+            <!-- row -->
+            <div class="row">
+                <!-- ASIDE -->
+                <div id="aside" class="col-md-3">
+                    <!-- aside Widget -->
+                    <div class="aside">
+                        <h3 class="aside-title">Danh mục</h3>
+                        <div class="checkbox-filter">
+                            @foreach (var item in categories)
+                            {
+                                <div class="input-checkbox">
+                                    <input name="category" checked value="@item.Name" type="checkbox" id="category-@item.Id">
+                                    <label for="category-@item.Id">
+                                        <span></span>
+                                        @item.Name
+                                        <small>(@item.Products.Count)</small>
+                                    </label>
+                                </div>
+                            }
+                        </div>
+                    </div>
+                    <!-- /aside Widget -->
+                    <!-- aside Widget -->
+                    <div class="aside">
+                        <h3 class="aside-title">Giá (Nghìn VNĐ)</h3>
+                        <div class="price-filter">
+                            <div id="price-slider"></div>
+                            <div class="input-number price-min">
+                                <input id="price-min" type="number">
+                                <span class="qty-up">+</span>
+                                <span class="qty-down">-</span>
+                            </div>
+                            <span>-</span>
+                            <div class="input-number price-max">
+                                <input id="price-max" type="number">
+                                <span class="qty-up">+</span>
+                                <span class="qty-down">-</span>
+                            </div>
+                        </div>
+                        <div>
+                            <br />
+                            <button id="price-filter-btn" style="width: 100%" class="btn btn-danger">Lọc</button>
+                        </div>
+                    </div>
+                    <!-- /aside Widget -->
+                    <!-- aside Widget -->
+                    <div class="aside">
+                        <h3 class="aside-title">Hãng sản xuất</h3>
+                        <div class="checkbox-filter">
+                            @foreach (var item in manufacturers)
+                            {
+                                <div class="input-checkbox">
+                                    <input checked name="manufacturer" value="@item.Name" type="checkbox" id="brand-@item.Id">
+                                    <label for="brand-@item.Id">
+                                        <span></span>
+                                        @item.Name
+                                        <small>(@item.Products.Count)</small>
+                                    </label>
+                                </div>
+                            }
+                        </div>
+                    </div>
+                </div>
+                <!-- /ASIDE -->
+                <!-- STORE -->
+                <div id="store" class="col-md-9">
+                    <!-- store top filter -->
+                    <div class="store-filter clearfix">
+                        <div class="store-sort">
+                            <label>
+                                Sắp xếp:
+                                <select name="order" class="input-select">
+                                    <option value="Name asc">Tên sản phẩm A -> Z</option>
+                                    <option value="Name desc">Tên sản phẩm Z -> A</option>
+                                    <option value="Price asc">Giá tăng dần</option>
+                                    <option value="Price desc">Giá giảm dần</option>
+                                </select>
+                            </label>
+                        </div>
+                    </div>
+                    <!-- /store top filter -->
+                    <!-- store products -->
+                    <div class="row" id="search-result">
+                        <!-- /product -->
+                        <div class="clearfix visible-sm visible-xs"></div>
+                    </div>
+                    <!-- /store products -->
+                    <!-- store bottom filter -->
+                    <div class="store-filter clearfix">
+                        <span class="store-qty">Hiển thị <span id="display-product"></span> / <span id="total-product"></span> kết quả</span>
+                        <ul class="store-pagination"></ul>
+                    </div>
+                    <!-- /store bottom filter -->
+                </div>
+                <!-- /STORE -->
+            </div>
+            <!-- /row -->
+        </div>
+    <!-- /container -->
+</div>
+
+@section Scripts {
+    <script>
+        function updateResult(page) {
+
+            var categoryNames = "";
+            $('[name=category]:checked').each(function () {
+                categoryNames += $(this).val() + ',';
+            });
+
+            var manufacturerNames = "";
+            $('[name=manufacturer]:checked').each(function () {
+                manufacturerNames += $(this).val() + ',';
+            });
+
+            var order = $('select[name=order] > option:selected').val();
+
+            $.post({
+                url: '/Customer/Search/UpdateSearchResult',
+                data: {
+                    categoryNames: categoryNames,
+                    manufacturerNames: manufacturerNames,
+                    page: page,
+                    order: order,
+                    minPrice: $('#price-min').val(),
+                    maxPrice: $('#price-max').val()
+                },
+                success: function (result) {
+                    if (result == "") {
+                        $('#search-result').html('<h4><center>Không có kết quả</center></h4>')
+                    } else {
+                        data = result.split('|');
+                        //update product
+                        $('#search-result').html(data[1]);
+
+                        //update display-product / total-product
+                        var totalProducts = parseInt(data[0]);
+                        $('#total-product').html(totalProducts);
+                        $('#display-product').html(($('.product').length + 9 * (page - 1)));
+
+                        //update paging
+                        var totalPage = (totalProducts % 9 == 0) ? parseInt(totalProducts / 9) : (parseInt(totalProducts / 9) + 1);
+                        $('.store-pagination').html(null);
+                        for (var i = 0; i < totalPage; i++) {
+                            if (i != page - 1) {
+                                $('.store-pagination').append('<li><a>' + (i + 1) + '</a></li>');
+                            } else {
+                                $('.store-pagination').append('<li class="active">' + (i + 1) + '</li>');
+                            }
+                        }
+                        $('html, body').animate({
+                            scrollTop: $("#top-search-result").offset().top
+                        }, 1000);
+                    }
+                }
+            });
+        }
+
+        $(function () {
+            if ($('.checkbox-filter').length > 0) {
+                updateResult(1);
+            }
+
+            $('select[name=order]').change(function () {
+                updateResult(1);
+            })
+
+            $(':checkbox, #price-filter-btn').click(function () {
+                updateResult(1);
+            });
+
+            $('.store-pagination').on("click", 'a', function () {
+                updateResult(parseInt($(this).html()));
+            });
+        });
+    </script>
+}

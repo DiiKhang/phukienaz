@@ -1,0 +1,29 @@
+﻿@model PhuKienAZ.Areas.Admin.Models.DataModel.Manufacturer
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+    var user = (PhuKienAZ.Areas.Admin.Models.DataModel.User)Session["user"];
+}
+
+<div>
+    <h3>Chi tiết thông tin danh mục hãng sản xuất</h3>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Name)
+        </dd>
+    </dl>
+</div>
+<p>
+    @Html.ActionLink(" Quay lại", "Index", null, new { Class = "back-button fa fa-hand-o-left" }) |
+    @Html.ActionLink(" ", "Edit", new { id = Model.Id }, new { Class = "image-link edit-image-link" })
+    @if (user.Manager && Model.Deleted)
+    {
+        <span> |</span><a href="/Admin/Manufacturers/Restore/@Model.Id"> Khôi phục </a>
+    }
+</p>

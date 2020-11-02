@@ -1,0 +1,58 @@
+﻿
+@{
+    ViewBag.Title = "ProByCat";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+    var soldProductByMonths = (Dictionary<string, int>)ViewBag.ProByCat;
+}
+
+<h3 style="text-align:center">Số lượng sản phẩm theo danh mục</h3>
+
+<div>
+    <canvas id="myChart"></canvas>
+</div>
+@{
+    var labels = new List<string>();
+    var data = new List<int>();
+    foreach (KeyValuePair<string, int> item in soldProductByMonths)
+    {
+        labels.Add("'" + item.Key + "'");
+        data.Add(item.Value);
+    }
+}
+
+@section scripts {
+    <script type="text/javascript" language="javascript" src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.3/Chart.min.js"></script>
+    <script type="text/javascript" language="javascript" src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.3/Chart.bundle.min.js"></script>
+    <script>
+
+        var ctx = $("#myChart");
+        var myChart = new Chart(ctx, {
+            type: 'bar',
+            data: {
+                labels: [@Html.Raw(string.Join(",", labels))],
+                datasets: [{
+                    label: 'Số lượng sản phẩm theo danh mục',
+                    data: [@string.Join(",", data)],
+                    backgroundColor: 'rgba(255, 99, 132, 0.2)',
+                    borderColor:  'rgba(255,99,132,1)',
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                scales: {
+                    yAxes: [{
+                        ticks: {
+                            beginAtZero: true
+                        }
+                    }]
+                },
+                elements: {
+                    line: {
+                        tension: 0, // disables bezier curves
+                    }
+                }
+            }
+        });
+    </script>
+}
+

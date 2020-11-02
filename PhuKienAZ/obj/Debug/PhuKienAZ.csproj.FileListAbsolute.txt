@@ -1,0 +1,218 @@
+E:\ProjectMCV\PhuKienAZ\PhuKienAZ\bin\ApplicationInsights.config
+E:\ProjectMCV\PhuKienAZ\PhuKienAZ\bin\roslyn\csc.exe
+E:\ProjectMCV\PhuKienAZ\PhuKienAZ\bin\roslyn\Microsoft.Build.Tasks.CodeAnalysis.dll
+E:\ProjectMCV\PhuKienAZ\PhuKienAZ\bin\roslyn\Microsoft.CodeAnalysis.CSharp.dll
+E:\ProjectMCV\PhuKienAZ\PhuKienAZ\bin\roslyn\Microsoft.CodeAnalysis.dll
+E:\ProjectMCV\PhuKienAZ\PhuKienAZ\bin\roslyn\Microsoft.CodeAnalysis.VisualBasic.dll
+E:\ProjectMCV\PhuKienAZ\PhuKienAZ\bin\roslyn\Microsoft.CSharp.Core.targets
+E:\ProjectMCV\PhuKienAZ\PhuKienAZ\bin\roslyn\Microsoft.VisualBasic.Core.targets
+E:\ProjectMCV\PhuKienAZ\PhuKienAZ\bin\roslyn\System.Collections.Immutable.dll
+E:\ProjectMCV\PhuKienAZ\PhuKienAZ\bin\roslyn\System.Reflection.Metadata.dll
+E:\ProjectMCV\PhuKienAZ\PhuKienAZ\bin\roslyn\vbc.exe
+E:\ProjectMCV\PhuKienAZ\PhuKienAZ\bin\roslyn\VBCSCompiler.exe
+E:\ProjectMCV\PhuKienAZ\PhuKienAZ\bin\roslyn\VBCSCompiler.exe.config
+E:\ProjectMCV\PhuKienAZ\PhuKienAZ\bin\PhuKienAZ.dll.config
+E:\ProjectMCV\PhuKienAZ\PhuKienAZ\bin\PhuKienAZ.dll
+E:\ProjectMCV\PhuKienAZ\PhuKienAZ\bin\PhuKienAZ.pdb
+E:\ProjectMCV\PhuKienAZ\PhuKienAZ\bin\Antlr3.Runtime.dll
+E:\ProjectMCV\PhuKienAZ\PhuKienAZ\bin\EntityFramework.dll
+E:\ProjectMCV\PhuKienAZ\PhuKienAZ\bin\EntityFramework.SqlServer.dll
+E:\ProjectMCV\PhuKienAZ\PhuKienAZ\bin\Microsoft.AI.Agent.Intercept.dll
+E:\ProjectMCV\PhuKienAZ\PhuKienAZ\bin\Microsoft.AI.DependencyCollector.dll
+E:\ProjectMCV\PhuKienAZ\PhuKienAZ\bin\Microsoft.AI.PerfCounterCollector.dll
+E:\ProjectMCV\PhuKienAZ\PhuKienAZ\bin\Microsoft.AI.ServerTelemetryChannel.dll
+E:\ProjectMCV\PhuKienAZ\PhuKienAZ\bin\Microsoft.AI.Web.dll
+E:\ProjectMCV\PhuKienAZ\PhuKienAZ\bin\Microsoft.AI.WindowsServer.dll
+E:\ProjectMCV\PhuKienAZ\PhuKienAZ\bin\Microsoft.ApplicationInsights.dll
+E:\ProjectMCV\PhuKienAZ\PhuKienAZ\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
+E:\ProjectMCV\PhuKienAZ\PhuKienAZ\bin\Microsoft.Web.Infrastructure.dll
+E:\ProjectMCV\PhuKienAZ\PhuKienAZ\bin\Newtonsoft.Json.dll
+E:\ProjectMCV\PhuKienAZ\PhuKienAZ\bin\System.Web.Helpers.dll
+E:\ProjectMCV\PhuKienAZ\PhuKienAZ\bin\System.Web.Mvc.dll
+E:\ProjectMCV\PhuKienAZ\PhuKienAZ\bin\System.Web.Optimization.dll
+E:\ProjectMCV\PhuKienAZ\PhuKienAZ\bin\System.Web.Razor.dll
+E:\ProjectMCV\PhuKienAZ\PhuKienAZ\bin\System.Web.WebPages.Deployment.dll
+E:\ProjectMCV\PhuKienAZ\PhuKienAZ\bin\System.Web.WebPages.dll
+E:\ProjectMCV\PhuKienAZ\PhuKienAZ\bin\System.Web.WebPages.Razor.dll
+E:\ProjectMCV\PhuKienAZ\PhuKienAZ\bin\WebGrease.dll
+E:\ProjectMCV\PhuKienAZ\PhuKienAZ\bin\EntityFramework.xml
+E:\ProjectMCV\PhuKienAZ\PhuKienAZ\bin\EntityFramework.SqlServer.xml
+E:\ProjectMCV\PhuKienAZ\PhuKienAZ\bin\Microsoft.AI.DependencyCollector.xml
+E:\ProjectMCV\PhuKienAZ\PhuKienAZ\bin\Microsoft.AI.ServerTelemetryChannel.xml
+E:\ProjectMCV\PhuKienAZ\PhuKienAZ\bin\Microsoft.AI.Web.xml
+E:\ProjectMCV\PhuKienAZ\PhuKienAZ\bin\Microsoft.AI.WindowsServer.xml
+E:\ProjectMCV\PhuKienAZ\PhuKienAZ\bin\Microsoft.ApplicationInsights.xml
+E:\ProjectMCV\PhuKienAZ\PhuKienAZ\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
+E:\ProjectMCV\PhuKienAZ\PhuKienAZ\bin\System.Web.Helpers.xml
+E:\ProjectMCV\PhuKienAZ\PhuKienAZ\bin\System.Web.Mvc.xml
+E:\ProjectMCV\PhuKienAZ\PhuKienAZ\bin\System.Web.Optimization.xml
+E:\ProjectMCV\PhuKienAZ\PhuKienAZ\bin\System.Web.Razor.xml
+E:\ProjectMCV\PhuKienAZ\PhuKienAZ\bin\System.Web.WebPages.xml
+E:\ProjectMCV\PhuKienAZ\PhuKienAZ\bin\System.Web.WebPages.Deployment.xml
+E:\ProjectMCV\PhuKienAZ\PhuKienAZ\bin\System.Web.WebPages.Razor.xml
+E:\ProjectMCV\PhuKienAZ\PhuKienAZ\bin\Antlr3.Runtime.pdb
+E:\ProjectMCV\PhuKienAZ\PhuKienAZ\bin\Newtonsoft.Json.xml
+E:\ProjectMCV\PhuKienAZ\PhuKienAZ\obj\Debug\PhuKienAZ.csprojResolveAssemblyReference.cache
+E:\ProjectMCV\PhuKienAZ\PhuKienAZ\obj\Debug\PhuKienAZ.dll
+E:\ProjectMCV\PhuKienAZ\PhuKienAZ\obj\Debug\PhuKienAZ.pdb
+E:\ProjectMCV\PhuKienAZ\PhuKienAZ\obj\Debug\PhuKienAZ.Migrations.v1.resources
+E:\ProjectMCV\PhuKienAZ\PhuKienAZ\obj\Debug\PhuKienAZ.csproj.GenerateResource.Cache
+E:\ProjectMCV\PhuKienAZ\PhuKienAZ\obj\Debug\PhuKienAZ.Migrations.v3.resources
+E:\ProjectMCV\PhuKienAZ\PhuKienAZ\obj\Debug\PhuKienAZ.Migrations.v4.resources
+E:\ProjectMCV\PhuKienAZ\PhuKienAZ\obj\Debug\PhuKienAZ.Migrations.v2.resources
+E:\ProjectMCV\PhuKienAZ\PhuKienAZ\obj\Debug\PhuKienAZ.Migrations.v5.resources
+E:\ProjectMCV\PhuKienAZ\PhuKienAZ\obj\Debug\PhuKienAZ.Migrations.v51.resources
+E:\ProjectMCV\PhuKienAZ\PhuKienAZ\bin\System.Linq.Dynamic.dll
+E:\ProjectMCV\PhuKienAZ\PhuKienAZ\obj\Debug\PhuKienAZ.Migrations.v6.resources
+E:\ProjectMCV\PhuKienAZ\PhuKienAZ\obj\Debug\PhuKienAZ.Migrations.v7.resources
+E:\ProjectMCV\PhuKienAZ\PhuKienAZ\obj\Debug\PhuKienAZ.Migrations.v8.resources
+E:\ProjectMCV\PhuKienAZ\PhuKienAZ\obj\Debug\PhuKienAZ.Migrations.v9.resources
+E:\ProjectMCV\PhuKienAZ\PhuKienAZ\obj\Debug\PhuKienAZ.Migrations.v91.resources
+E:\ProjectMCV\PhuKienAZ\PhuKienAZ\obj\Debug\PhuKienAZ.Migrations.v10.resources
+E:\ProjectMCV\PhuKienAZ\PhuKienAZ\bin\PagedList.dll
+E:\ProjectMCV\PhuKienAZ\PhuKienAZ\bin\PagedList.Mvc.dll
+E:\ProjectMCV\PhuKienAZ\PhuKienAZ\bin\PagedList.xml
+E:\ProjectMCV\PhuKienAZ\PhuKienAZ\bin\PagedList.Mvc.xml
+E:\ProjectMCV\PhuKienAZ\PhuKienAZ\obj\Debug\PhuKienAZ.Migrations.v12.resources
+H:\ASP NET\PhuKienAZ\PhuKienAZ\obj\Debug\PhuKienAZ.dll
+H:\ASP NET\PhuKienAZ\PhuKienAZ\obj\Debug\PhuKienAZ.pdb
+H:\ASP NET\PhuKienAZ\PhuKienAZ\bin\ApplicationInsights.config
+H:\ASP NET\PhuKienAZ\PhuKienAZ\bin\roslyn\csc.exe
+H:\ASP NET\PhuKienAZ\PhuKienAZ\bin\roslyn\Microsoft.Build.Tasks.CodeAnalysis.dll
+H:\ASP NET\PhuKienAZ\PhuKienAZ\bin\roslyn\Microsoft.CodeAnalysis.CSharp.dll
+H:\ASP NET\PhuKienAZ\PhuKienAZ\bin\roslyn\Microsoft.CodeAnalysis.dll
+H:\ASP NET\PhuKienAZ\PhuKienAZ\bin\roslyn\Microsoft.CodeAnalysis.VisualBasic.dll
+H:\ASP NET\PhuKienAZ\PhuKienAZ\bin\roslyn\Microsoft.CSharp.Core.targets
+H:\ASP NET\PhuKienAZ\PhuKienAZ\bin\roslyn\Microsoft.VisualBasic.Core.targets
+H:\ASP NET\PhuKienAZ\PhuKienAZ\bin\roslyn\System.Collections.Immutable.dll
+H:\ASP NET\PhuKienAZ\PhuKienAZ\bin\roslyn\System.Reflection.Metadata.dll
+H:\ASP NET\PhuKienAZ\PhuKienAZ\bin\roslyn\vbc.exe
+H:\ASP NET\PhuKienAZ\PhuKienAZ\bin\roslyn\VBCSCompiler.exe
+H:\ASP NET\PhuKienAZ\PhuKienAZ\bin\roslyn\VBCSCompiler.exe.config
+H:\ASP NET\PhuKienAZ\PhuKienAZ\bin\PhuKienAZ.dll.config
+H:\ASP NET\PhuKienAZ\PhuKienAZ\bin\PhuKienAZ.dll
+H:\ASP NET\PhuKienAZ\PhuKienAZ\bin\PhuKienAZ.pdb
+H:\ASP NET\PhuKienAZ\PhuKienAZ\bin\Antlr3.Runtime.dll
+H:\ASP NET\PhuKienAZ\PhuKienAZ\bin\EntityFramework.dll
+H:\ASP NET\PhuKienAZ\PhuKienAZ\bin\EntityFramework.SqlServer.dll
+H:\ASP NET\PhuKienAZ\PhuKienAZ\bin\Microsoft.AI.Agent.Intercept.dll
+H:\ASP NET\PhuKienAZ\PhuKienAZ\bin\Microsoft.AI.DependencyCollector.dll
+H:\ASP NET\PhuKienAZ\PhuKienAZ\bin\Microsoft.AI.PerfCounterCollector.dll
+H:\ASP NET\PhuKienAZ\PhuKienAZ\bin\Microsoft.AI.ServerTelemetryChannel.dll
+H:\ASP NET\PhuKienAZ\PhuKienAZ\bin\Microsoft.AI.Web.dll
+H:\ASP NET\PhuKienAZ\PhuKienAZ\bin\Microsoft.AI.WindowsServer.dll
+H:\ASP NET\PhuKienAZ\PhuKienAZ\bin\Microsoft.ApplicationInsights.dll
+H:\ASP NET\PhuKienAZ\PhuKienAZ\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
+H:\ASP NET\PhuKienAZ\PhuKienAZ\bin\Microsoft.Web.Infrastructure.dll
+H:\ASP NET\PhuKienAZ\PhuKienAZ\bin\Newtonsoft.Json.dll
+H:\ASP NET\PhuKienAZ\PhuKienAZ\bin\PagedList.dll
+H:\ASP NET\PhuKienAZ\PhuKienAZ\bin\PagedList.Mvc.dll
+H:\ASP NET\PhuKienAZ\PhuKienAZ\bin\System.Linq.Dynamic.dll
+H:\ASP NET\PhuKienAZ\PhuKienAZ\bin\System.Web.Helpers.dll
+H:\ASP NET\PhuKienAZ\PhuKienAZ\bin\System.Web.Mvc.dll
+H:\ASP NET\PhuKienAZ\PhuKienAZ\bin\System.Web.Optimization.dll
+H:\ASP NET\PhuKienAZ\PhuKienAZ\bin\System.Web.Razor.dll
+H:\ASP NET\PhuKienAZ\PhuKienAZ\bin\System.Web.WebPages.Deployment.dll
+H:\ASP NET\PhuKienAZ\PhuKienAZ\bin\System.Web.WebPages.dll
+H:\ASP NET\PhuKienAZ\PhuKienAZ\bin\System.Web.WebPages.Razor.dll
+H:\ASP NET\PhuKienAZ\PhuKienAZ\bin\WebGrease.dll
+H:\ASP NET\PhuKienAZ\PhuKienAZ\bin\EntityFramework.xml
+H:\ASP NET\PhuKienAZ\PhuKienAZ\bin\EntityFramework.SqlServer.xml
+H:\ASP NET\PhuKienAZ\PhuKienAZ\bin\Microsoft.AI.DependencyCollector.xml
+H:\ASP NET\PhuKienAZ\PhuKienAZ\bin\Microsoft.AI.ServerTelemetryChannel.xml
+H:\ASP NET\PhuKienAZ\PhuKienAZ\bin\Microsoft.AI.Web.xml
+H:\ASP NET\PhuKienAZ\PhuKienAZ\bin\Microsoft.AI.WindowsServer.xml
+H:\ASP NET\PhuKienAZ\PhuKienAZ\bin\Microsoft.ApplicationInsights.xml
+H:\ASP NET\PhuKienAZ\PhuKienAZ\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
+H:\ASP NET\PhuKienAZ\PhuKienAZ\bin\PagedList.xml
+H:\ASP NET\PhuKienAZ\PhuKienAZ\bin\PagedList.Mvc.xml
+H:\ASP NET\PhuKienAZ\PhuKienAZ\bin\System.Web.Helpers.xml
+H:\ASP NET\PhuKienAZ\PhuKienAZ\bin\System.Web.Mvc.xml
+H:\ASP NET\PhuKienAZ\PhuKienAZ\bin\System.Web.Optimization.xml
+H:\ASP NET\PhuKienAZ\PhuKienAZ\bin\System.Web.Razor.xml
+H:\ASP NET\PhuKienAZ\PhuKienAZ\bin\System.Web.WebPages.xml
+H:\ASP NET\PhuKienAZ\PhuKienAZ\bin\System.Web.WebPages.Deployment.xml
+H:\ASP NET\PhuKienAZ\PhuKienAZ\bin\System.Web.WebPages.Razor.xml
+H:\ASP NET\PhuKienAZ\PhuKienAZ\bin\Antlr3.Runtime.pdb
+H:\ASP NET\PhuKienAZ\PhuKienAZ\bin\Newtonsoft.Json.xml
+H:\ASP NET\PhuKienAZ\PhuKienAZ\obj\Debug\PhuKienAZ.csprojAssemblyReference.cache
+H:\ASP NET\PhuKienAZ\PhuKienAZ\obj\Debug\PhuKienAZ.Migrations.v1.resources
+H:\ASP NET\PhuKienAZ\PhuKienAZ\obj\Debug\PhuKienAZ.Migrations.v3.resources
+H:\ASP NET\PhuKienAZ\PhuKienAZ\obj\Debug\PhuKienAZ.Migrations.v4.resources
+H:\ASP NET\PhuKienAZ\PhuKienAZ\obj\Debug\PhuKienAZ.Migrations.v2.resources
+H:\ASP NET\PhuKienAZ\PhuKienAZ\obj\Debug\PhuKienAZ.Migrations.v5.resources
+H:\ASP NET\PhuKienAZ\PhuKienAZ\obj\Debug\PhuKienAZ.Migrations.v51.resources
+H:\ASP NET\PhuKienAZ\PhuKienAZ\obj\Debug\PhuKienAZ.Migrations.v6.resources
+H:\ASP NET\PhuKienAZ\PhuKienAZ\obj\Debug\PhuKienAZ.Migrations.v7.resources
+H:\ASP NET\PhuKienAZ\PhuKienAZ\obj\Debug\PhuKienAZ.Migrations.v8.resources
+H:\ASP NET\PhuKienAZ\PhuKienAZ\obj\Debug\PhuKienAZ.Migrations.v9.resources
+H:\ASP NET\PhuKienAZ\PhuKienAZ\obj\Debug\PhuKienAZ.Migrations.v91.resources
+H:\ASP NET\PhuKienAZ\PhuKienAZ\obj\Debug\PhuKienAZ.Migrations.v10.resources
+H:\ASP NET\PhuKienAZ\PhuKienAZ\obj\Debug\PhuKienAZ.Migrations.v12.resources
+H:\ASP NET\PhuKienAZ\PhuKienAZ\obj\Debug\PhuKienAZ.csproj.GenerateResource.cache
+H:\ASP NET\PhuKienAZ\PhuKienAZ\obj\Debug\PhuKienAZ.csproj.CopyComplete
+H:\Báo cáo Client Server\PhuKienAZ\PhuKienAZ\bin\ApplicationInsights.config
+H:\Báo cáo Client Server\PhuKienAZ\PhuKienAZ\bin\roslyn\csc.exe
+H:\Báo cáo Client Server\PhuKienAZ\PhuKienAZ\bin\roslyn\Microsoft.Build.Tasks.CodeAnalysis.dll
+H:\Báo cáo Client Server\PhuKienAZ\PhuKienAZ\bin\roslyn\Microsoft.CodeAnalysis.CSharp.dll
+H:\Báo cáo Client Server\PhuKienAZ\PhuKienAZ\bin\roslyn\Microsoft.CodeAnalysis.dll
+H:\Báo cáo Client Server\PhuKienAZ\PhuKienAZ\bin\roslyn\Microsoft.CodeAnalysis.VisualBasic.dll
+H:\Báo cáo Client Server\PhuKienAZ\PhuKienAZ\bin\roslyn\Microsoft.CSharp.Core.targets
+H:\Báo cáo Client Server\PhuKienAZ\PhuKienAZ\bin\roslyn\Microsoft.VisualBasic.Core.targets
+H:\Báo cáo Client Server\PhuKienAZ\PhuKienAZ\bin\roslyn\System.Collections.Immutable.dll
+H:\Báo cáo Client Server\PhuKienAZ\PhuKienAZ\bin\roslyn\System.Reflection.Metadata.dll
+H:\Báo cáo Client Server\PhuKienAZ\PhuKienAZ\bin\roslyn\vbc.exe
+H:\Báo cáo Client Server\PhuKienAZ\PhuKienAZ\bin\roslyn\VBCSCompiler.exe
+H:\Báo cáo Client Server\PhuKienAZ\PhuKienAZ\bin\roslyn\VBCSCompiler.exe.config
+H:\Báo cáo Client Server\PhuKienAZ\PhuKienAZ\bin\PhuKienAZ.dll.config
+H:\Báo cáo Client Server\PhuKienAZ\PhuKienAZ\bin\PhuKienAZ.dll
+H:\Báo cáo Client Server\PhuKienAZ\PhuKienAZ\bin\PhuKienAZ.pdb
+H:\Báo cáo Client Server\PhuKienAZ\PhuKienAZ\bin\Antlr3.Runtime.dll
+H:\Báo cáo Client Server\PhuKienAZ\PhuKienAZ\bin\EntityFramework.dll
+H:\Báo cáo Client Server\PhuKienAZ\PhuKienAZ\bin\EntityFramework.SqlServer.dll
+H:\Báo cáo Client Server\PhuKienAZ\PhuKienAZ\bin\Microsoft.AI.Agent.Intercept.dll
+H:\Báo cáo Client Server\PhuKienAZ\PhuKienAZ\bin\Microsoft.AI.DependencyCollector.dll
+H:\Báo cáo Client Server\PhuKienAZ\PhuKienAZ\bin\Microsoft.AI.PerfCounterCollector.dll
+H:\Báo cáo Client Server\PhuKienAZ\PhuKienAZ\bin\Microsoft.AI.ServerTelemetryChannel.dll
+H:\Báo cáo Client Server\PhuKienAZ\PhuKienAZ\bin\Microsoft.AI.Web.dll
+H:\Báo cáo Client Server\PhuKienAZ\PhuKienAZ\bin\Microsoft.AI.WindowsServer.dll
+H:\Báo cáo Client Server\PhuKienAZ\PhuKienAZ\bin\Microsoft.ApplicationInsights.dll
+H:\Báo cáo Client Server\PhuKienAZ\PhuKienAZ\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
+H:\Báo cáo Client Server\PhuKienAZ\PhuKienAZ\bin\Microsoft.Web.Infrastructure.dll
+H:\Báo cáo Client Server\PhuKienAZ\PhuKienAZ\bin\Newtonsoft.Json.dll
+H:\Báo cáo Client Server\PhuKienAZ\PhuKienAZ\bin\PagedList.dll
+H:\Báo cáo Client Server\PhuKienAZ\PhuKienAZ\bin\PagedList.Mvc.dll
+H:\Báo cáo Client Server\PhuKienAZ\PhuKienAZ\bin\System.Linq.Dynamic.dll
+H:\Báo cáo Client Server\PhuKienAZ\PhuKienAZ\bin\System.Web.Helpers.dll
+H:\Báo cáo Client Server\PhuKienAZ\PhuKienAZ\bin\System.Web.Mvc.dll
+H:\Báo cáo Client Server\PhuKienAZ\PhuKienAZ\bin\System.Web.Optimization.dll
+H:\Báo cáo Client Server\PhuKienAZ\PhuKienAZ\bin\System.Web.Razor.dll
+H:\Báo cáo Client Server\PhuKienAZ\PhuKienAZ\bin\System.Web.WebPages.Deployment.dll
+H:\Báo cáo Client Server\PhuKienAZ\PhuKienAZ\bin\System.Web.WebPages.dll
+H:\Báo cáo Client Server\PhuKienAZ\PhuKienAZ\bin\System.Web.WebPages.Razor.dll
+H:\Báo cáo Client Server\PhuKienAZ\PhuKienAZ\bin\WebGrease.dll
+H:\Báo cáo Client Server\PhuKienAZ\PhuKienAZ\bin\EntityFramework.xml
+H:\Báo cáo Client Server\PhuKienAZ\PhuKienAZ\bin\EntityFramework.SqlServer.xml
+H:\Báo cáo Client Server\PhuKienAZ\PhuKienAZ\bin\Microsoft.AI.DependencyCollector.xml
+H:\Báo cáo Client Server\PhuKienAZ\PhuKienAZ\bin\Microsoft.AI.ServerTelemetryChannel.xml
+H:\Báo cáo Client Server\PhuKienAZ\PhuKienAZ\bin\Microsoft.AI.Web.xml
+H:\Báo cáo Client Server\PhuKienAZ\PhuKienAZ\bin\Microsoft.AI.WindowsServer.xml
+H:\Báo cáo Client Server\PhuKienAZ\PhuKienAZ\bin\Microsoft.ApplicationInsights.xml
+H:\Báo cáo Client Server\PhuKienAZ\PhuKienAZ\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
+H:\Báo cáo Client Server\PhuKienAZ\PhuKienAZ\bin\PagedList.xml
+H:\Báo cáo Client Server\PhuKienAZ\PhuKienAZ\bin\PagedList.Mvc.xml
+H:\Báo cáo Client Server\PhuKienAZ\PhuKienAZ\bin\System.Web.Helpers.xml
+H:\Báo cáo Client Server\PhuKienAZ\PhuKienAZ\bin\System.Web.Mvc.xml
+H:\Báo cáo Client Server\PhuKienAZ\PhuKienAZ\bin\System.Web.Optimization.xml
+H:\Báo cáo Client Server\PhuKienAZ\PhuKienAZ\bin\System.Web.Razor.xml
+H:\Báo cáo Client Server\PhuKienAZ\PhuKienAZ\bin\System.Web.WebPages.xml
+H:\Báo cáo Client Server\PhuKienAZ\PhuKienAZ\bin\System.Web.WebPages.Deployment.xml
+H:\Báo cáo Client Server\PhuKienAZ\PhuKienAZ\bin\System.Web.WebPages.Razor.xml
+H:\Báo cáo Client Server\PhuKienAZ\PhuKienAZ\bin\Antlr3.Runtime.pdb
+H:\Báo cáo Client Server\PhuKienAZ\PhuKienAZ\bin\Newtonsoft.Json.xml
+H:\Báo cáo Client Server\PhuKienAZ\PhuKienAZ\obj\Debug\PhuKienAZ.csprojAssemblyReference.cache
+H:\Báo cáo Client Server\PhuKienAZ\PhuKienAZ\obj\Debug\PhuKienAZ.csproj.CopyComplete
+H:\Báo cáo Client Server\PhuKienAZ\PhuKienAZ\obj\Debug\PhuKienAZ.dll
+H:\Báo cáo Client Server\PhuKienAZ\PhuKienAZ\obj\Debug\PhuKienAZ.pdb
+H:\Báo cáo Client Server\PhuKienAZ\PhuKienAZ\obj\Debug\PhuKienAZ.Migrations.InitialCreate.resources
+H:\Báo cáo Client Server\PhuKienAZ\PhuKienAZ\obj\Debug\PhuKienAZ.csproj.GenerateResource.cache
